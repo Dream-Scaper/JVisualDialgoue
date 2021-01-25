@@ -1264,7 +1264,7 @@ MonoBehaviour:
   placeholderName: ????
   speakerColor: {r: 1, g: 1, b: 1, a: 1}
   inactiveColor: {r: 0.5849056, g: 0.5849056, b: 0.5849056, a: 1}
-  lineFinished: 0
+  lineFinished: 1
   UiUp: 0
 --- !u!95 &3625490598105976249
 Animator:

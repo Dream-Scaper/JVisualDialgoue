@@ -31,11 +31,6 @@ namespace JVDialogue
         [HideInInspector]
         public bool isTalking = false;
 
-        void Start()
-        {
-            dialogueUI.CloseUI();
-        }
-
         void Update()
         {
             if (isTalking)
@@ -76,13 +71,14 @@ namespace JVDialogue
 
         public void NextTextbox()
         {
-            if (textboxIndex >= input.Textboxes.Count)
+            if (textboxIndex >= input.Textboxes.Count && dialogueUI.lineFinished)
             {
                 EndDialogue();
                 return;
             }
 
-            dialogueUI.DisplayTextbox(input.Textboxes[textboxIndex], 1, !dialogueUI.lineFinished);
+            Debug.Log("Current index: " + textboxIndex);
+            dialogueUI.DisplayTextbox(input.Textboxes[textboxIndex], 1, dialogueUI.lineFinished);
         }
 
         public void LastTextbox()
@@ -93,7 +89,8 @@ namespace JVDialogue
                 return;
             }
 
-            dialogueUI.DisplayTextbox(input.Textboxes[textboxIndex], -1, !dialogueUI.lineFinished);
+            Debug.Log("Current index: " + textboxIndex);
+            dialogueUI.DisplayTextbox(input.Textboxes[textboxIndex], -1, dialogueUI.lineFinished);
         }
 
         public void EndDialogue()

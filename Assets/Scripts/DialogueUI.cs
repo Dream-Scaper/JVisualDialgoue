@@ -43,7 +43,7 @@ namespace JVDialogue
         public Color inactiveColor = Color.gray;
 
         [HideInInspector]
-        public bool lineFinished = false;
+        public bool lineFinished = true;
         private int scrollIndex = 0;
 
         [HideInInspector]
@@ -73,12 +73,11 @@ namespace JVDialogue
 
         public void DisplayTextbox(Textbox textbox, int incrementIndex, bool scrollText)
         {
-            //speechText.text = "";
-            speechText.text = textbox.text;
+            speechText.text = "";
+            lineFinished = false;
+            endTextIndicator.SetActive(false);
 
             Debug.Log("Displaying: " + textbox.text);
-
-            endTextIndicator.SetActive(false);
 
             background.sprite = textbox.background;
 
@@ -106,24 +105,20 @@ namespace JVDialogue
                 }
             }
 
-            endTextIndicator.SetActive(true);
+            if (scrollText)
+            {
+                StartCoroutine(ScrollText(textbox.text, incrementIndex));
+            }
+            else
+            {
+                StopCoroutine(ScrollText(textbox.text, incrementIndex));
 
-            lineFinished = true;
-            myManager.IncrementTextboxIndex(incrementIndex);
+                speechText.text = textbox.text;
+                lineFinished = true;
+                endTextIndicator.SetActive(true);
 
-            // TODO: fix this
-            //if (scrollText)
-            //{
-            //    StartCoroutine(ScrollText(textbox.text, incrementIndex));
-            //}
-            //else
-            //{
-            //    StopCoroutine(ScrollText(textbox.text, incrementIndex));
-            //    endTextIndicator.SetActive(true);
-
-            //    lineFinished = true;
-            //    myManager.IncrementTextboxIndex(incrementIndex);
-            //}
+                myManager.IncrementTextboxIndex(incrementIndex);
+            }
         }
 
         public void CloseUI()
