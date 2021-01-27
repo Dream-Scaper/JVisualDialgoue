@@ -7,7 +7,10 @@ namespace JVDialogue
     public class DialogueManager : MonoBehaviour
     {
         private DialogueTrigger activeTrigger;
-        private Dialogue input;
+
+        // We dont want other scripts overriding this, but we do want them to be able to see it.
+        [HideInInspector]
+        public Dialogue ActiveDialogue { get; private set; }
 
         [Header("Required Game Objects")]
         public DialogueUI dialogueUI;
@@ -25,8 +28,10 @@ namespace JVDialogue
 
         public Dialogue placeholderDialogue;
 
+        // Just like with ActiveDialogue, we need the UI to share this with us but not edit it directly.
         [HideInInspector]
         private int textboxIndex = 0;
+        public int TextboxIndex => textboxIndex;
 
         [HideInInspector]
         public bool isTalking = false;
@@ -39,7 +44,7 @@ namespace JVDialogue
 
                 if (Input.GetButtonDown(continueInput) && missinputPreventionTimer <= 0)
                 {
-                    NextTextbox();
+                    ChangeTextbox(1, true);
                 }
             }
         }
@@ -47,6 +52,8 @@ namespace JVDialogue
         public void IncrementTextboxIndex(int increment)
         {
             textboxIndex += increment;
+
+            textboxIndex = Mathf.Clamp(textboxIndex, 0, ActiveDialogue.Textboxes.Count);
         }
 
         public void StartDialogue(DialogueTrigger dialogue)
@@ -59,44 +66,37 @@ namespace JVDialogue
             textboxIndex = 0;
 
             activeTrigger = dialogue;
-            input = activeTrigger.dialogueInput;
+            ActiveDialogue = activeTrigger.dialogueInput;
 
-            if (input == null)
+            if (ActiveDialogue == null)
             {
-                input = placeholderDialogue;
+                ActiveDialogue = placeholderDialogue;
             }
 
-            NextTextbox();
+            ChangeTextbox(0, false);
         }
 
-        public void NextTextbox()
+        public void ChangeTextbox(int increment, bool incrementBefore)
         {
-            if (textboxIndex >= input.Textboxes.Count && dialogueUI.lineFinished)
+            if (textboxIndex >= ActiveDialogue.Textboxes.Count - 1 && dialogueUI.lineFinished && increment > 0)
             {
                 EndDialogue();
                 return;
             }
-
-            Debug.Log("Current index: " + textboxIndex);
-            dialogueUI.DisplayTextbox(input.Textboxes[textboxIndex], 1, dialogueUI.lineFinished);
-        }
-
-        public void LastTextbox()
-        {
-            if (textboxIndex < 0)
+            else if (textboxIndex < 0)
             {
-                textboxIndex = 0;
                 return;
             }
 
-            Debug.Log("Current index: " + textboxIndex);
-            dialogueUI.DisplayTextbox(input.Textboxes[textboxIndex], -1, dialogueUI.lineFinished);
+            dialogueUI.DisplayTextbox(increment, incrementBefore, dialogueUI.lineFinished);
         }
 
         public void EndDialogue()
         {
             dialogueUI.CloseUI();
             isTalking = false;
+
+            activeTrigger.OnEndDialogue.Invoke();
         }
     }
 }

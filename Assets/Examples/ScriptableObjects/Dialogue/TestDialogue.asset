@@ -14,14 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   background: {fileID: 0}
   characters:
-  - {fileID: 11400000, guid: a4628125637cfe84797b15a832a3bdb8, type: 2}
   - {fileID: 0}
+  - {fileID: 11400000, guid: a4628125637cfe84797b15a832a3bdb8, type: 2}
   - {fileID: 0}
   - {fileID: 11400000, guid: 25c8b3e02e80de244ab15ec28e995bcb, type: 2}
   - {fileID: 0}
-  characterEmotes: 0300000000000000000000000200000000000000
-  activeCharacter: 0
-  text: Because we haven't tested anything!
+  characterEmotes: 0000000001000000000000000100000000000000
+  activeCharacter: 1
+  text: Alright then! That should do it I think. Time to close the textbox once you
+    hit the next button one more time...
 --- !u!114 &-784373761607567072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41,9 +42,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 11400000, guid: 25c8b3e02e80de244ab15ec28e995bcb, type: 2}
   - {fileID: 0}
-  characterEmotes: 0000000000000000000000000300000000000000
+  characterEmotes: 0000000000000000000000000100000000000000
   activeCharacter: 3
-  text: And why not?!
+  text: Wow thats great news! I'm also going to say way too much in an attempt to
+    fill up the textbox for debugging purposes.
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,9 +82,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 11400000, guid: 25c8b3e02e80de244ab15ec28e995bcb, type: 2}
-  characterEmotes: 0200000000000000000000000000000000000000
+  characterEmotes: 0100000000000000000000000000000000000000
   activeCharacter: 0
-  text: No not really...
+  text: It seems to now actually yeah! Now I can keep writting to see how long I
+    can get this to be.
 --- !u!114 &8222293499254795101
 MonoBehaviour:
   m_ObjectHideFlags: 0

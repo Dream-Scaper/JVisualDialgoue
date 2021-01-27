@@ -45,6 +45,7 @@ namespace JVDialogue
         [HideInInspector]
         public bool lineFinished = true;
         private int scrollIndex = 0;
+        private Coroutine currentScroll;
 
         [HideInInspector]
         public bool UiUp = false;
@@ -56,13 +57,13 @@ namespace JVDialogue
             if (nextTextboxButton != null)
             {
                 nextTextboxButton.onClick.RemoveAllListeners();
-                nextTextboxButton.onClick.AddListener(delegate { myManager.NextTextbox(); });
+                nextTextboxButton.onClick.AddListener(delegate { myManager.ChangeTextbox(1, true); });
             }
 
             if (lastTextboxButton != null)
             {
                 lastTextboxButton.onClick.RemoveAllListeners();
-                lastTextboxButton.onClick.AddListener(delegate { myManager.LastTextbox(); });
+                lastTextboxButton.onClick.AddListener(delegate { myManager.ChangeTextbox(-1, true); });
             }
         }
 
@@ -71,13 +72,18 @@ namespace JVDialogue
             animator.SetBool(AnimatorVariables.dialogueUp, true);
         }
 
-        public void DisplayTextbox(Textbox textbox, int incrementIndex, bool scrollText)
+        public void DisplayTextbox(int incrementIndex, bool incrementBefore, bool scrollText)
         {
             speechText.text = "";
-            lineFinished = false;
             endTextIndicator.SetActive(false);
 
-            Debug.Log("Displaying: " + textbox.text);
+            if (incrementBefore && lineFinished)
+            {
+                myManager.IncrementTextboxIndex(incrementIndex);
+            }
+
+            Textbox textbox = myManager.ActiveDialogue.Textboxes[myManager.TextboxIndex];
+            UpdateLastNextButtons(myManager.TextboxIndex);
 
             background.sprite = textbox.background;
 
@@ -107,17 +113,22 @@ namespace JVDialogue
 
             if (scrollText)
             {
-                StartCoroutine(ScrollText(textbox.text, incrementIndex));
+                currentScroll = StartCoroutine(ScrollText(textbox.text, incrementIndex, !incrementBefore));
             }
             else
             {
-                StopCoroutine(ScrollText(textbox.text, incrementIndex));
+                Debug.Log("Dialogue line interrupted!");
+
+                StopCoroutine(currentScroll);
 
                 speechText.text = textbox.text;
                 lineFinished = true;
                 endTextIndicator.SetActive(true);
 
-                myManager.IncrementTextboxIndex(incrementIndex);
+                if (!incrementBefore)
+                {
+                    myManager.IncrementTextboxIndex(incrementIndex);
+                }
             }
         }
 
@@ -126,7 +137,15 @@ namespace JVDialogue
             animator.SetBool(AnimatorVariables.dialogueUp, false);
         }
 
-        private IEnumerator ScrollText(string text, int incrementIndex)
+        private void UpdateLastNextButtons(int idx)
+        {
+            if (lastTextboxButton != null)
+            {
+                lastTextboxButton.gameObject.SetActive(!(idx == 0));
+            }
+        }
+
+        private IEnumerator ScrollText(string text, int incrementIndex, bool increment)
         {
             scrollIndex = 0;
             lineFinished = false;
@@ -156,7 +175,13 @@ namespace JVDialogue
 
             lineFinished = true;
             endTextIndicator.SetActive(true);
-            myManager.IncrementTextboxIndex(incrementIndex);
+
+            Debug.Log("Dialogue line finished!");
+
+            if (increment)
+            {
+                myManager.IncrementTextboxIndex(incrementIndex);
+            }
         }
     }
 }

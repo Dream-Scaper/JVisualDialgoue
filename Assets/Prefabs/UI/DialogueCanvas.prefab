@@ -1260,7 +1260,7 @@ MonoBehaviour:
   lastTextboxButton: {fileID: 4081539084400135385}
   endTextIndicator: {fileID: 5747151840833533848}
   textScrollSpeed: 0.025
-  charactersUntilNewline: 65
+  charactersUntilNewline: 80
   placeholderName: ????
   speakerColor: {r: 1, g: 1, b: 1, a: 1}
   inactiveColor: {r: 0.5849056, g: 0.5849056, b: 0.5849056, a: 1}

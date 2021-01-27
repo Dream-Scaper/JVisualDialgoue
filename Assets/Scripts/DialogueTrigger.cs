@@ -52,6 +52,7 @@ namespace JVDialogue
             if (!isAlreadyTalking())
             {
                 myManager.StartDialogue(this);
+                OnStartDialogue.Invoke();
             }
         }
 
