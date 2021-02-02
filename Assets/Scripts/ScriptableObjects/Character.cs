@@ -2,6 +2,7 @@
 
 namespace JVDialogue
 {
+    [System.Serializable]
     [CreateAssetMenu(fileName = "New Character", menuName = "JVDialogue/Character")]
     public class Character : ScriptableObject
     {

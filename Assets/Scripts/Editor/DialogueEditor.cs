@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEditorInternal;
 
 namespace JVDialogue
 {
@@ -9,15 +10,66 @@ namespace JVDialogue
     public class DialogueEditor : Editor
     {
         private Dialogue dialogue;
+        private List<bool> foldOuts;
+        private List<int> tabs;
 
         private void OnEnable()
         {
             dialogue = (Dialogue)target;
+
+            if (foldOuts == null)
+            {
+                foldOuts = new List<bool>();
+
+                foreach (var tb in dialogue.Textboxes)
+                {
+                    foldOuts.Add(true);
+                }
+            }
+
+            if (tabs == null)
+            {
+                tabs = new List<int>();
+
+                foreach (var tb in dialogue.Textboxes)
+                {
+                    tabs.Add(0);
+                }
+            }
         }
 
         public override void OnInspectorGUI()
         {
-            base.DrawDefaultInspector();
+            for (int i = 0; i < dialogue.Textboxes.Count; i++)
+            {
+                using (new GUILayout.VerticalScope(EditorStyles.helpBox))
+                {
+                    foldOuts[i] = EditorGUILayout.Foldout(foldOuts[i], "Textbox " + (i + 1), true);
+                    if (foldOuts[i])
+                    {
+                        SerializedObject soTb = new SerializedObject(dialogue.Textboxes[i]);
+
+                        // Tabs
+                        tabs[i] = GUILayout.Toolbar(tabs[i], new string[] { "Slot 1", "Slot 2", "Slot 3", "Slot 4", "Slot 5", });
+
+                        for (int j = 0; j < dialogue.Textboxes[i].characters.Length; j++)
+                        {
+
+
+                        }
+
+                        // Tabs End
+                        EditorGUILayout.PropertyField(soTb.FindProperty(nameof(Textbox.text)));
+
+                        if (GUILayout.Button("Remove Dialogue Line " + i))
+                        {
+                            RemoveTextbox(i);
+                        }
+                    }
+                }
+
+                GUILayout.Space(5);
+            }
 
             if (GUILayout.Button("Add Textbox"))
             {
@@ -38,6 +90,8 @@ namespace JVDialogue
             newTextbox.characters = new Character[5];
             newTextbox.characterEmotes = new Character.EmotionState[5];
             dialogue.Textboxes.Add(newTextbox);
+            foldOuts.Add(true);
+            tabs.Add(0);
 
             // Add the Textbox asset to be a child of this Dialogue asset.
             AssetDatabase.AddObjectToAsset(newTextbox, dialogue);
@@ -46,9 +100,16 @@ namespace JVDialogue
             AssetDatabase.Refresh();
         }
 
-        private void RemoveTextbox(Textbox textbox)
+        private void RemoveTextbox(int index)
         {
+            // Remove the textbox from the dialogue, then refresh the database.
+            AssetDatabase.RemoveObjectFromAsset(dialogue.Textboxes[index]);
+            dialogue.Textboxes.RemoveAt(index);
+            foldOuts.RemoveAt(index);
+            tabs.RemoveAt(index);
 
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
         }
 
         private void RemoveAllTextboxes()
@@ -59,6 +120,8 @@ namespace JVDialogue
                 // And remove the Textbox asset from the Dialogue asset, as well as remove it from the list.
                 AssetDatabase.RemoveObjectFromAsset(dialogue.Textboxes[i]);
                 dialogue.Textboxes.RemoveAt(i);
+                foldOuts.RemoveAt(i);
+                tabs.RemoveAt(i);
             }
 
             AssetDatabase.SaveAssets();

@@ -26,7 +26,7 @@ namespace JVDialogue
 
         // Private Variables
         private DialogueManager myManager;
-        private bool isAlreadyTalking()
+        private bool IsAlreadyTalking()
         {
             return myManager.isTalking;
         }
@@ -49,10 +49,9 @@ namespace JVDialogue
 
         public void TriggerDialogue()
         {
-            if (!isAlreadyTalking())
+            if (!IsAlreadyTalking())
             {
                 myManager.StartDialogue(this);
-                OnStartDialogue.Invoke();
             }
         }
 

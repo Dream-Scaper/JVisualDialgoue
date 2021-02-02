@@ -49,7 +49,7 @@ namespace JVDialogue
             }
         }
 
-        public void IncrementTextboxIndex(int increment)
+        public void ChangeTextboxIndex(int increment)
         {
             textboxIndex += increment;
 
@@ -66,6 +66,8 @@ namespace JVDialogue
             textboxIndex = 0;
 
             activeTrigger = dialogue;
+            activeTrigger.OnEndDialogue.Invoke();
+
             ActiveDialogue = activeTrigger.dialogueInput;
 
             if (ActiveDialogue == null)

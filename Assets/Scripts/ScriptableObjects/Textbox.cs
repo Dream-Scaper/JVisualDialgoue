@@ -2,6 +2,7 @@
 
 namespace JVDialogue
 {
+    [System.Serializable]
     public class Textbox : ScriptableObject
     {
         public Sprite background;

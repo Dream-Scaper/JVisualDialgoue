@@ -1141,10 +1141,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3546807265285513030}
+  - component: {fileID: 5327841098207647248}
   - component: {fileID: 3546807265285513025}
   - component: {fileID: 3546807265285513024}
   - component: {fileID: 3546807265285513027}
-  - component: {fileID: 5327841098207647248}
   - component: {fileID: 3625490598105976249}
   m_Layer: 5
   m_Name: DialogueCanvas
@@ -1173,6 +1173,41 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &5327841098207647248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3546807265285513026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9ee455df1acf2547bf47ea8a623fc7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myManager: {fileID: 0}
+  animator: {fileID: 3625490598105976249}
+  nameText: {fileID: 3546807264419315540}
+  speechText: {fileID: 3546807264576557182}
+  background: {fileID: 3546807263394920116}
+  characterProfiles:
+  - {fileID: 3546807263199122424}
+  - {fileID: 3546807263690520570}
+  - {fileID: 3546807264260636794}
+  - {fileID: 3546807264353647716}
+  - {fileID: 3546807264403610170}
+  nextTextboxButton: {fileID: 3566205576604905665}
+  lastTextboxButton: {fileID: 4081539084400135385}
+  endLineIndicator: {fileID: 5747151840833533848}
+  UiUp: 0
+  placeholderName: ????
+  scrollTextOverride: 1
+  textScrollSpeed: 0.025
+  charactersUntilNewline: 80
+  lineFinished: 1
+  speakerColor: {r: 1, g: 1, b: 1, a: 1}
+  inactiveColor: {r: 0.5849056, g: 0.5849056, b: 0.5849056, a: 1}
+  displayBackground: 1
 --- !u!223 &3546807265285513025
 Canvas:
   m_ObjectHideFlags: 0
@@ -1233,39 +1268,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &5327841098207647248
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3546807265285513026}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9ee455df1acf2547bf47ea8a623fc7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myManager: {fileID: 0}
-  animator: {fileID: 3625490598105976249}
-  nameText: {fileID: 3546807264419315540}
-  speechText: {fileID: 3546807264576557182}
-  background: {fileID: 3546807263394920116}
-  characterProfiles:
-  - {fileID: 3546807263199122424}
-  - {fileID: 3546807263690520570}
-  - {fileID: 3546807264260636794}
-  - {fileID: 3546807264353647716}
-  - {fileID: 3546807264403610170}
-  nextTextboxButton: {fileID: 3566205576604905665}
-  lastTextboxButton: {fileID: 4081539084400135385}
-  endTextIndicator: {fileID: 5747151840833533848}
-  textScrollSpeed: 0.025
-  charactersUntilNewline: 80
-  placeholderName: ????
-  speakerColor: {r: 1, g: 1, b: 1, a: 1}
-  inactiveColor: {r: 0.5849056, g: 0.5849056, b: 0.5849056, a: 1}
-  lineFinished: 1
-  UiUp: 0
 --- !u!95 &3625490598105976249
 Animator:
   serializedVersion: 3
