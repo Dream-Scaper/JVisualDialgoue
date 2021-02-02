@@ -22,6 +22,28 @@ MonoBehaviour:
   characterEmotes: 0000000000000000000000000000000000000000
   activeCharacter: 0
   text: OH NO! THE TRIGGER DIDN'T HAVE A VALID DIALOGUE ASSIGNED.
+--- !u!114 &-2791094932376292150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 117a73bb48acb5b49886c14603a0063b, type: 3}
+  m_Name: 2
+  m_EditorClassIdentifier: 
+  background: {fileID: 0}
+  characters:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  characterEmotes: 0000000000000000000000000000000000000000
+  activeCharacter: 0
+  text: Extra Box
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36,3 +58,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Textboxes:
   - {fileID: -5863213751933318942}
+  - {fileID: -2791094932376292150}

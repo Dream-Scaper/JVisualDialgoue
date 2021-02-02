@@ -9,6 +9,7 @@ namespace JVDialogue
     public class DialogueUIEditor : Editor
     {
         SerializedObject so;
+
         private bool showScrollSettings = true;
         private int activeTab = 0;
 
