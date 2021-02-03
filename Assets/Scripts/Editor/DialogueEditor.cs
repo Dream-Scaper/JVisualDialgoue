@@ -136,6 +136,21 @@ namespace JVDialogue
             newTextbox.name = (dialogue.Textboxes.Count + 1).ToString();
             newTextbox.characters = new Character[DialogueHelper.profileNumber];
             newTextbox.characterEmotes = new DialogueHelper.EmotionState[DialogueHelper.profileNumber];
+
+            if (DialogueHelper.populateByDuplicating)
+            {
+                if (dialogue.Textboxes.Count > 0)
+                {
+                    newTextbox.activeCharacter = dialogue.Textboxes[dialogue.Textboxes.Count - 1].activeCharacter;
+
+                    for (int i = 0; i < DialogueHelper.profileNumber; i++)
+                    {
+                        newTextbox.characters[i] = dialogue.Textboxes[dialogue.Textboxes.Count - 1].characters[i];
+                        newTextbox.characterEmotes[i] = dialogue.Textboxes[dialogue.Textboxes.Count - 1].characterEmotes[i];
+                    }
+                }
+            }
+
             dialogue.Textboxes.Add(newTextbox);
             foldOuts.Add(true);
             tabs.Add(0);

@@ -16,5 +16,8 @@ namespace JVDialogue
         // This is used in determining how many profile sprites/character slots
         // the overall dialogue system attempts to use.
         public static int profileNumber = 5;
+
+        // When pressing "New Textbox" in the editor, a copy of the previous textbox is made rather than a completely blank slate.
+        public static bool populateByDuplicating = true;
     }
 }

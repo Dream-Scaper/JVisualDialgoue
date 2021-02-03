@@ -1,0 +1,132 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-2617966528256691505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 117a73bb48acb5b49886c14603a0063b, type: 3}
+  m_Name: 1
+  m_EditorClassIdentifier: 
+  characters:
+  - {fileID: 11400000, guid: ae5600407093a7142b67b85051d00108, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 25c8b3e02e80de244ab15ec28e995bcb, type: 2}
+  characterEmotes: 0000000000000000000000000000000002000000
+  activeCharacter: 4
+  background: {fileID: 0}
+  text: Oh I am just a bored NPC who does nothing but sit around all day...
+--- !u!114 &-438999575395734632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 117a73bb48acb5b49886c14603a0063b, type: 3}
+  m_Name: 5
+  m_EditorClassIdentifier: 
+  characters:
+  - {fileID: 11400000, guid: ae5600407093a7142b67b85051d00108, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 25c8b3e02e80de244ab15ec28e995bcb, type: 2}
+  characterEmotes: 0100000000000000000000000000000001000000
+  activeCharacter: 4
+  background: {fileID: 0}
+  text: Now go forth! To the red orb that will appear once you've finished this dialogue!
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c67441e00cbc755429533444816e3bb7, type: 3}
+  m_Name: NPC
+  m_EditorClassIdentifier: 
+  Textboxes:
+  - {fileID: -2617966528256691505}
+  - {fileID: 7999492386754531211}
+  - {fileID: 181060401388555003}
+  - {fileID: 5946412497130140567}
+  - {fileID: -438999575395734632}
+--- !u!114 &181060401388555003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 117a73bb48acb5b49886c14603a0063b, type: 3}
+  m_Name: 3
+  m_EditorClassIdentifier: 
+  characters:
+  - {fileID: 11400000, guid: ae5600407093a7142b67b85051d00108, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 25c8b3e02e80de244ab15ec28e995bcb, type: 2}
+  characterEmotes: 0300000000000000000000000000000000000000
+  activeCharacter: 4
+  background: {fileID: 0}
+  text: Yeah alright I'm done doing this bit. This is an example how how to set up
+    an NPC with a dialouge that triggers once you press a button specified.
+--- !u!114 &5946412497130140567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 117a73bb48acb5b49886c14603a0063b, type: 3}
+  m_Name: 4
+  m_EditorClassIdentifier: 
+  characters:
+  - {fileID: 11400000, guid: ae5600407093a7142b67b85051d00108, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 25c8b3e02e80de244ab15ec28e995bcb, type: 2}
+  characterEmotes: 0000000000000000000000000000000000000000
+  activeCharacter: 4
+  background: {fileID: 0}
+  text: It uses the same bindings as the default Unity input system, but this can
+    be changed with very little code tweaking!
+--- !u!114 &7999492386754531211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 117a73bb48acb5b49886c14603a0063b, type: 3}
+  m_Name: 2
+  m_EditorClassIdentifier: 
+  characters:
+  - {fileID: 11400000, guid: ae5600407093a7142b67b85051d00108, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 25c8b3e02e80de244ab15ec28e995bcb, type: 2}
+  characterEmotes: 0200000000000000000000000000000001000000
+  activeCharacter: 4
+  background: {fileID: 0}
+  text: Oh! Hark! A player for which to speak to!

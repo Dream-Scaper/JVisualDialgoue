@@ -10,15 +10,12 @@ namespace JVDialogue
     {
         // This editor is designed to be mostly read-only stats.
         // All editing should be done directly on the Dialogue object.
-
-        SerializedObject so;
         private Textbox tb;
 
         private bool foldout = true;
 
         private void OnEnable()
         {
-            so = serializedObject;
             tb = (Textbox)target;
         }
 

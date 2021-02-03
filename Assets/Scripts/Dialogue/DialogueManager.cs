@@ -23,8 +23,7 @@ namespace JVDialogue
         private float missinputPreventionBuffer = 0.5f;
         private float missinputPreventionTimer;
 
-        [SerializeField]
-        private string continueInput = "Submit";
+        public string continueInput = "Submit";
 
         public Dialogue placeholderDialogue;
 
@@ -66,7 +65,6 @@ namespace JVDialogue
             textboxIndex = 0;
 
             activeTrigger = dialogue;
-            activeTrigger.OnEndDialogue.Invoke();
 
             ActiveDialogue = activeTrigger.dialogueInput;
 
@@ -80,25 +78,35 @@ namespace JVDialogue
 
         public void ChangeTextbox(int increment, bool incrementBefore)
         {
-            if (textboxIndex >= ActiveDialogue.Textboxes.Count - 1 && dialogueUI.lineFinished && increment > 0)
+            if (ActiveDialogue != null)
             {
-                EndDialogue();
-                return;
-            }
-            else if (textboxIndex < 0)
-            {
-                return;
-            }
+                if (textboxIndex >= ActiveDialogue.Textboxes.Count - 1 && dialogueUI.lineFinished && increment > 0)
+                {
+                    EndDialogue();
+                    return;
+                }
+                else if (textboxIndex < 0)
+                {
+                    return;
+                }
 
-            dialogueUI.DisplayTextbox(increment, incrementBefore, dialogueUI.lineFinished);
+                dialogueUI.DisplayTextbox(increment, incrementBefore, dialogueUI.lineFinished);
+            }
         }
 
         public void EndDialogue()
         {
-            dialogueUI.CloseUI();
-            isTalking = false;
+            if (ActiveDialogue != null)
+            {
+                dialogueUI.CloseUI();
+                isTalking = false;
 
-            activeTrigger.OnEndDialogue.Invoke();
+                activeTrigger.EndDialogue();
+
+                activeTrigger = null;
+                ActiveDialogue = null;
+
+            }
         }
     }
 }

@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-4248820777859285552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 117a73bb48acb5b49886c14603a0063b, type: 3}
+  m_Name: 1
+  m_EditorClassIdentifier: 
+  characters:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: ae5600407093a7142b67b85051d00108, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  characterEmotes: 0000000000000000010000000000000000000000
+  activeCharacter: 2
+  background: {fileID: 0}
+  text: (Woah! as soon as you touched the orb, this dialogue popped up!)
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c67441e00cbc755429533444816e3bb7, type: 3}
+  m_Name: Instant
+  m_EditorClassIdentifier: 
+  Textboxes:
+  - {fileID: -4248820777859285552}
+  - {fileID: 9126858491772681769}
+  - {fileID: 8322157321279196601}
+--- !u!114 &8322157321279196601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 117a73bb48acb5b49886c14603a0063b, type: 3}
+  m_Name: 3
+  m_EditorClassIdentifier: 
+  characters:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: ae5600407093a7142b67b85051d00108, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  characterEmotes: 0000000000000000020000000000000000000000
+  activeCharacter: 0
+  background: {fileID: 0}
+  text: This dialogue will now self destruct.
+--- !u!114 &9126858491772681769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 117a73bb48acb5b49886c14603a0063b, type: 3}
+  m_Name: 2
+  m_EditorClassIdentifier: 
+  characters:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: ae5600407093a7142b67b85051d00108, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  characterEmotes: 0000000000000000000000000000000000000000
+  activeCharacter: 0
+  background: {fileID: 0}
+  text: 'Mysterious voice here: this is what happens when you set a trigger to be
+    instant instead of requring an input!'

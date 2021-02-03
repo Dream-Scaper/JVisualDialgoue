@@ -33,13 +33,20 @@ namespace JVDialogue
                     default:
                     case 0:
                         EditorGUILayout.PropertyField(so.FindProperty(nameof(DialogueTrigger.dialogueInput)));
-                        EditorGUILayout.PropertyField(so.FindProperty(nameof(DialogueTrigger.interactableLayers)));
+                        EditorGUILayout.PropertyField(so.FindProperty(nameof(DialogueTrigger.interactionTag)));
                         EditorGUILayout.PropertyField(so.FindProperty(nameof(DialogueTrigger.beginOnStart)));
                         EditorGUILayout.PropertyField(so.FindProperty(nameof(DialogueTrigger.triggerOnce)));
+                        EditorGUILayout.PropertyField(so.FindProperty(nameof(DialogueTrigger.triggerInstantly)));
+                        if (!diaTrig.triggerInstantly)
+                        {
+                            EditorGUILayout.PropertyField(so.FindProperty(nameof(DialogueTrigger.interactionButton)));
+                        }
                         break;
                     case 1:
                         EditorGUILayout.PropertyField(so.FindProperty(nameof(DialogueTrigger.OnStartDialogue)));
                         EditorGUILayout.PropertyField(so.FindProperty(nameof(DialogueTrigger.OnEndDialogue)));
+                        EditorGUILayout.PropertyField(so.FindProperty(nameof(DialogueTrigger.OnEnterTrigger)));
+                        EditorGUILayout.PropertyField(so.FindProperty(nameof(DialogueTrigger.OnExitTrigger)));
                         break;
                 }
             }
