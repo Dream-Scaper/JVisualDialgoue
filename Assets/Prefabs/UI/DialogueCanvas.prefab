@@ -39,10 +39,10 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 100}
-  m_SizeDelta: {x: -140, y: -400}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 0, y: 300}
+  m_SizeDelta: {x: -140, y: 680}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &7778773227606829393
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -195,9 +195,9 @@ MonoBehaviour:
   m_MinWidth: -1
   m_MinHeight: -1
   m_PreferredWidth: 135.5
-  m_PreferredHeight: -1
-  m_FlexibleWidth: 1
-  m_FlexibleHeight: 1
+  m_PreferredHeight: 680
+  m_FlexibleWidth: 0.5
+  m_FlexibleHeight: -1
   m_LayoutPriority: 1
 --- !u!1 &3546807263280918913
 GameObject:
@@ -452,9 +452,9 @@ MonoBehaviour:
   m_MinWidth: -1
   m_MinHeight: -1
   m_PreferredWidth: 135.5
-  m_PreferredHeight: -1
-  m_FlexibleWidth: 1
-  m_FlexibleHeight: 1
+  m_PreferredHeight: 680
+  m_FlexibleWidth: 0.5
+  m_FlexibleHeight: -1
   m_LayoutPriority: 1
 --- !u!1 &3546807264260636788
 GameObject:
@@ -546,9 +546,9 @@ MonoBehaviour:
   m_MinWidth: -1
   m_MinHeight: -1
   m_PreferredWidth: 135.5
-  m_PreferredHeight: -1
-  m_FlexibleWidth: 1
-  m_FlexibleHeight: 1
+  m_PreferredHeight: 680
+  m_FlexibleWidth: 0.5
+  m_FlexibleHeight: -1
   m_LayoutPriority: 1
 --- !u!1 &3546807264353647718
 GameObject:
@@ -641,9 +641,9 @@ MonoBehaviour:
   m_MinWidth: -1
   m_MinHeight: -1
   m_PreferredWidth: 135.5
-  m_PreferredHeight: -1
-  m_FlexibleWidth: 1
-  m_FlexibleHeight: 1
+  m_PreferredHeight: 680
+  m_FlexibleWidth: 0.5
+  m_FlexibleHeight: -1
   m_LayoutPriority: 1
 --- !u!1 &3546807264403610164
 GameObject:
@@ -736,9 +736,9 @@ MonoBehaviour:
   m_MinWidth: -1
   m_MinHeight: -1
   m_PreferredWidth: 135.5
-  m_PreferredHeight: -1
-  m_FlexibleWidth: 1
-  m_FlexibleHeight: 1
+  m_PreferredHeight: 680
+  m_FlexibleWidth: 0.5
+  m_FlexibleHeight: -1
   m_LayoutPriority: 1
 --- !u!1 &3546807264419315542
 GameObject:
@@ -960,8 +960,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: TEST TEXT TEST TEXT TEST TEXT TEST TEXT TEST TEXT TEST TEXT TEST TEXT TEST
-    TEXT TEST TEXT TEST TEXT TEST TEXT TEST TEXT TEST TEXT TEST TEXT TEST TEXT TEST
-    TEXT TEST TEXT TEST TEXT TEST TEXT TEST TEXT TEST TEXT
+    TEXT TEST TEXT TEST TEXT TEST TEXT TEST TEXT TEST TEXT TEST TEXT
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cd240c951159b4343ba432daa1c52a14, type: 2}
   m_sharedMaterial: {fileID: -5168435910164018823, guid: cd240c951159b4343ba432daa1c52a14,
@@ -1007,7 +1006,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 140
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -1031,12 +1030,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 3546807264576557182}
-    characterCount: 209
+    characterCount: 139
     spriteCount: 0
-    spaceCount: 41
-    wordCount: 42
+    spaceCount: 27
+    wordCount: 28
     linkCount: 0
-    lineCount: 3
+    lineCount: 2
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -1142,10 +1141,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3546807265285513030}
   - component: {fileID: 5327841098207647248}
+  - component: {fileID: 3625490598105976249}
   - component: {fileID: 3546807265285513025}
   - component: {fileID: 3546807265285513024}
   - component: {fileID: 3546807265285513027}
-  - component: {fileID: 3625490598105976249}
   m_Layer: 5
   m_Name: DialogueCanvas
   m_TagString: Untagged
@@ -1208,6 +1207,25 @@ MonoBehaviour:
   speakerColor: {r: 1, g: 1, b: 1, a: 1}
   inactiveColor: {r: 0.5849056, g: 0.5849056, b: 0.5849056, a: 1}
   displayBackground: 1
+--- !u!95 &3625490598105976249
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3546807265285513026}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5ecf88bab277fe740b7735aa7278f85b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!223 &3546807265285513025
 Canvas:
   m_ObjectHideFlags: 0
@@ -1268,25 +1286,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!95 &3625490598105976249
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3546807265285513026}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5ecf88bab277fe740b7735aa7278f85b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5470532842912340377
 GameObject:
   m_ObjectHideFlags: 0

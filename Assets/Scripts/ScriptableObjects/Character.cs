@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace JVDialogue
 {
@@ -6,29 +7,35 @@ namespace JVDialogue
     [CreateAssetMenu(fileName = "New Character", menuName = "JVDialogue/Character")]
     public class Character : ScriptableObject
     {
-        public enum EmotionState { NEUTRAL, HAPPY, SAD, ANGRY };
+        public enum EmotionState { Neutral, Happy, Sad, Angry };
 
-        [Header("Character Attributes")]
         public string npcName;
 
-        [Header("Character Sprites")]
         public Sprite fallback;
-
-        [Space(10)]
-
-        public Sprite neutral;
-        public Sprite happy;
-        public Sprite sad;
-        public Sprite angry;
-
-        [HideInInspector]
         public Sprite[] emotions;
 
         private void OnEnable()
         {
             if (emotions == null)
             {
-                emotions = new Sprite[] { neutral, happy, sad, angry };
+                emotions = new Sprite[Enum.GetNames(typeof(EmotionState)).Length];
+            }
+
+            if (emotions.Length != Enum.GetNames(typeof(EmotionState)).Length)
+            {
+                ResizeArray();
+            }
+        }
+
+        private void ResizeArray()
+        {
+            Sprite[] temp = emotions;
+
+            emotions = new Sprite[Enum.GetNames(typeof(EmotionState)).Length];
+
+            for (int i = 0; i < Mathf.Min(temp.Length, emotions.Length); i++)
+            {
+                emotions[i] = temp[i];
             }
         }
     }

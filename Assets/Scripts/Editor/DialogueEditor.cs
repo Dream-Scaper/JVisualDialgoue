@@ -1,9 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-using UnityEditor.AnimatedValues;
-using UnityEditorInternal;
 
 namespace JVDialogue
 {
@@ -54,7 +51,7 @@ namespace JVDialogue
                 string previewString = "";
                 if (dialogue.Textboxes[i].text != null) previewString = dialogue.Textboxes[i].text.Substring(0, Mathf.Min(30, dialogue.Textboxes[i].text.Length));
 
-                foldOuts[i] = EditorGUILayout.BeginFoldoutHeaderGroup(foldOuts[i], "Textbox " + (i + 1) + ": " + previewString + "...");
+                foldOuts[i] = EditorGUILayout.BeginFoldoutHeaderGroup(foldOuts[i], $"Textbox {i + 1}: {previewString}...");
                 if (foldOuts[i])
                 {
                     using (new GUILayout.VerticalScope(EditorStyles.helpBox))
@@ -152,32 +149,36 @@ namespace JVDialogue
 
         private void RemoveTextbox(int index)
         {
-            // TODO: Add CODA.
-            // Remove the textbox from the dialogue, then refresh the database.
-            AssetDatabase.RemoveObjectFromAsset(dialogue.Textboxes[index]);
-            dialogue.Textboxes.RemoveAt(index);
-            foldOuts.RemoveAt(index);
-            tabs.RemoveAt(index);
+            if (EditorUtility.DisplayDialog($"Remove Textbox {index + 1}", $"Are you sure you want to remove Textbox ({index + 1}) from the Dialogue ({dialogue.name})?\nThis action is not reverseable.", "Remove", "Cancel"))
+            {
+                // Remove the textbox from the dialogue, then refresh the database.
+                AssetDatabase.RemoveObjectFromAsset(dialogue.Textboxes[index]);
+                dialogue.Textboxes.RemoveAt(index);
+                foldOuts.RemoveAt(index);
+                tabs.RemoveAt(index);
 
-            AssetDatabase.SaveAssets();
-            AssetDatabase.Refresh();
+                AssetDatabase.SaveAssets();
+                AssetDatabase.Refresh();
+            }
         }
 
         private void RemoveAllTextboxes()
         {
-            // TODO: Add CODA.
-            // Movebackwards through the list...
-            for (int i = dialogue.Textboxes.Count - 1; i >= 0 ; i--)
+            if (EditorUtility.DisplayDialog("Remove All Textboxes", $"Are you sure you want to remove ALL Textboxes from the Dialogue ({dialogue.name})?\nThis action is not reverseable.", "Remove All", "Cancel"))
             {
-                // And remove the Textbox asset from the Dialogue asset, as well as remove it from the list.
-                AssetDatabase.RemoveObjectFromAsset(dialogue.Textboxes[i]);
-                dialogue.Textboxes.RemoveAt(i);
-                foldOuts.RemoveAt(i);
-                tabs.RemoveAt(i);
-            }
+                // Movebackwards through the list...
+                for (int i = dialogue.Textboxes.Count - 1; i >= 0; i--)
+                {
+                    // And remove the Textbox asset from the Dialogue asset, as well as remove it from the list.
+                    AssetDatabase.RemoveObjectFromAsset(dialogue.Textboxes[i]);
+                    dialogue.Textboxes.RemoveAt(i);
+                    foldOuts.RemoveAt(i);
+                    tabs.RemoveAt(i);
+                }
 
-            AssetDatabase.SaveAssets();
-            AssetDatabase.Refresh();
+                AssetDatabase.SaveAssets();
+                AssetDatabase.Refresh();
+            }
         }
     }
 }

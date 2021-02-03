@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -66,17 +65,18 @@ namespace JVDialogue
 
         public void DisplayTextbox(int incrementIndex, bool incrementBefore, bool scrollText)
         {
+            // Set the text to be blank, and the end-text indicator to off.
             speechText.text = "";
             endLineIndicator.SetActive(false);
 
-            if (incrementBefore && lineFinished)
-            {
-                myManager.ChangeTextboxIndex(incrementIndex);
-            }
+            // If we need to increment before begining, do so here.
+            if (incrementBefore && lineFinished) myManager.ChangeTextboxIndex(incrementIndex);
 
+            // Grab the active textbox, aand update the UI buttons based on our index.
             Textbox textbox = myManager.ActiveDialogue.Textboxes[myManager.TextboxIndex];
             UpdateLastNextButtons(myManager.TextboxIndex);
 
+            // Set the background.
             if (displayBackground)
             {
                 background.sprite = textbox.background;
@@ -88,15 +88,10 @@ namespace JVDialogue
                 background.color = Color.clear;
             }
 
-            if (textbox.characters[textbox.activeCharacter] != null)
-            {
-                nameText.text = textbox.characters[textbox.activeCharacter].name;
-            }
-            else
-            {
-                nameText.text = placeholderName;
-            }
+            // Set the active NPC speaking name.
+            nameText.text = textbox.characters[textbox.activeCharacter] != null ? textbox.characters[textbox.activeCharacter].name : placeholderName;
 
+            // Set the character profile sprites.
             for (int i = 0; i < characterProfiles.Length; i++)
             {
                 characterProfiles[i].color = i == textbox.activeCharacter ? speakerColor : inactiveColor;
@@ -112,6 +107,7 @@ namespace JVDialogue
                 }
             }
 
+            // Scroll (or don't) the text in the text box!
             if (scrollText && scrollTextOverride)
             {
                 currentScroll = StartCoroutine(ScrollText(textbox.text, incrementIndex, !incrementBefore));
@@ -124,10 +120,7 @@ namespace JVDialogue
                 lineFinished = true;
                 endLineIndicator.SetActive(true);
 
-                if (!incrementBefore)
-                {
-                    myManager.ChangeTextboxIndex(incrementIndex);
-                }
+                if (!incrementBefore) myManager.ChangeTextboxIndex(incrementIndex);
             }
         }
 
@@ -144,43 +137,43 @@ namespace JVDialogue
             }
         }
 
-        private IEnumerator ScrollText(string text, int incrementIndex, bool increment)
+        private IEnumerator ScrollText(string intputText, int incrementIndex, bool increment)
         {
             scrollIndex = 0;
             lineFinished = false;
 
+            // Wait until the animation has set the UI to being fully up.
             yield return new WaitUntil(() => UiUp);
 
             int newLineIndex = 0;
 
-            while (speechText.text.Length < text.Length + newLineIndex)
+            // While the UI text's length is less than the input text's length...
+            while (speechText.text.Length < intputText.Length + newLineIndex)
             {
-                if (scrollIndex > text.Length + newLineIndex)
+                if (scrollIndex > intputText.Length + newLineIndex)
                 {
                     break;
                 }
 
-                if (scrollIndex >= charactersUntilNewline * (newLineIndex + 1) && text[scrollIndex] == ' ')
+                // If it's around time to newline, do so as long as the character up next is a space.
+                if (scrollIndex >= charactersUntilNewline * (newLineIndex + 1) && intputText[scrollIndex] == ' ')
                 {
                     speechText.text += Environment.NewLine;
                     scrollIndex++;
                     newLineIndex++;
                 }
 
-                speechText.text += text[scrollIndex];
+                // Add the single character to the UI text, and wait.
+                speechText.text += intputText[scrollIndex];
                 scrollIndex++;
                 yield return new WaitForSeconds(textScrollSpeed);
             }
 
+            // Exit of the loop, line is fully displayed!
             lineFinished = true;
             endLineIndicator.SetActive(true);
 
-            Debug.Log("Dialogue line finished!");
-
-            if (increment)
-            {
-                myManager.ChangeTextboxIndex(incrementIndex);
-            }
+            if (increment) myManager.ChangeTextboxIndex(incrementIndex);
         }
     }
 }

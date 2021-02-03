@@ -22,7 +22,7 @@ MonoBehaviour:
   characterEmotes: 0000000001000000000000000100000000000000
   activeCharacter: 1
   text: Alright then! That should do it I think. Time to close the textbox once you
-    hit the next button one more time...
+    hit the next button one more time... unless you hit that last button...
 --- !u!114 &-784373761607567072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85,7 +85,8 @@ MonoBehaviour:
   characterEmotes: 0100000000000000000000000000000000000000
   activeCharacter: 0
   text: It seems to now actually yeah! Now I can keep writting to see how long I
-    can get this to be.
+    can get this to be. Going to try to get this to at least line two. Maybe three.
+    Lets just see how long we can get it for fun!
 --- !u!114 &8222293499254795101
 MonoBehaviour:
   m_ObjectHideFlags: 0

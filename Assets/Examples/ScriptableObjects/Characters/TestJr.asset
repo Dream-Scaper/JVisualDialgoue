@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: TestJr
   m_EditorClassIdentifier: 
   npcName: Test Jr.
-  fallback: {fileID: 4998263170083437863, guid: 8d198d9dbeae3a544bf5eac93af11ff6,
+  fallback: {fileID: 2200727321873666041, guid: 938abf76004d81747830af40006c54b8,
     type: 3}
-  neutral: {fileID: 4998263170083437863, guid: 8d198d9dbeae3a544bf5eac93af11ff6, type: 3}
-  happy: {fileID: 2736706150363895195, guid: 8d198d9dbeae3a544bf5eac93af11ff6, type: 3}
-  sad: {fileID: 7192667376382339131, guid: 8d198d9dbeae3a544bf5eac93af11ff6, type: 3}
-  angry: {fileID: -3490474351605685888, guid: 8d198d9dbeae3a544bf5eac93af11ff6, type: 3}
+  neutral: {fileID: 2200727321873666041, guid: 938abf76004d81747830af40006c54b8, type: 3}
+  happy: {fileID: 7506944445019638772, guid: 938abf76004d81747830af40006c54b8, type: 3}
+  sad: {fileID: 1859600618466029514, guid: 938abf76004d81747830af40006c54b8, type: 3}
+  angry: {fileID: -1844990240155814153, guid: 938abf76004d81747830af40006c54b8, type: 3}
   emotions:
   - {fileID: -3490474351605685888, guid: 8d198d9dbeae3a544bf5eac93af11ff6, type: 3}
   - {fileID: 7192667376382339131, guid: 8d198d9dbeae3a544bf5eac93af11ff6, type: 3}

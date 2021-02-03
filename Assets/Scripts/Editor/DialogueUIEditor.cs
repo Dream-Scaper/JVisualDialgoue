@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEditor;
 
 namespace JVDialogue
@@ -9,13 +7,16 @@ namespace JVDialogue
     public class DialogueUIEditor : Editor
     {
         SerializedObject so;
+        private DialogueUI diaUI;
 
         private bool showScrollSettings = true;
+        private bool foldoutDebug = false;
         private int activeTab = 0;
 
         private void OnEnable()
         {
             so = serializedObject;
+            diaUI = (DialogueUI)target;
         }
 
         public override void OnInspectorGUI()
@@ -78,6 +79,16 @@ namespace JVDialogue
                 }
             }
 
+            using (new GUILayout.VerticalScope(EditorStyles.helpBox))
+            {
+                foldoutDebug = EditorGUILayout.Foldout(foldoutDebug, "Debug");
+
+                if (foldoutDebug)
+                {
+                    EditorGUILayout.LabelField($"UI Up?: {diaUI.UiUp}");
+                    EditorGUILayout.LabelField($"Line Finished?: {diaUI.lineFinished}");
+                }
+            }
 
             if (EditorGUI.EndChangeCheck())
             {

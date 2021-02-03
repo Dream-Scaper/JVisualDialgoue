@@ -10,13 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e4aacf05c894074bb2cfdf15a5f3ae8, type: 3}
-  m_Name: MrTest
+  m_Name: NewChara
   m_EditorClassIdentifier: 
-  npcName: Mr. Test
-  fallback: {fileID: -3490474351605685888, guid: 8d198d9dbeae3a544bf5eac93af11ff6,
-    type: 3}
+  npcName: NEw
+  fallback: {fileID: 21300000, guid: 396727cd7f996ee48b425b9312dd9496, type: 3}
   emotions:
-  - {fileID: -3490474351605685888, guid: 8d198d9dbeae3a544bf5eac93af11ff6, type: 3}
-  - {fileID: 7192667376382339131, guid: 8d198d9dbeae3a544bf5eac93af11ff6, type: 3}
+  - {fileID: 2200727321873666041, guid: 938abf76004d81747830af40006c54b8, type: 3}
+  - {fileID: 7506944445019638772, guid: 938abf76004d81747830af40006c54b8, type: 3}
   - {fileID: 2736706150363895195, guid: 8d198d9dbeae3a544bf5eac93af11ff6, type: 3}
-  - {fileID: 4998263170083437863, guid: 8d198d9dbeae3a544bf5eac93af11ff6, type: 3}
+  - {fileID: -1844990240155814153, guid: 938abf76004d81747830af40006c54b8, type: 3}
