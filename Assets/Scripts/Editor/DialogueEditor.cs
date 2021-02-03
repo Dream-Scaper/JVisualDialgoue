@@ -134,8 +134,8 @@ namespace JVDialogue
             // Add a textbox with some default values.
             Textbox newTextbox = ScriptableObject.CreateInstance<Textbox>();
             newTextbox.name = (dialogue.Textboxes.Count + 1).ToString();
-            newTextbox.characters = new Character[5];
-            newTextbox.characterEmotes = new Character.EmotionState[5];
+            newTextbox.characters = new Character[DialogueHelper.profileNumber];
+            newTextbox.characterEmotes = new DialogueHelper.EmotionState[DialogueHelper.profileNumber];
             dialogue.Textboxes.Add(newTextbox);
             foldOuts.Add(true);
             tabs.Add(0);

@@ -6,7 +6,6 @@ namespace JVDialogue
     public class DialogueTrigger : MonoBehaviour
     {
         // Public Variables
-        [Header("Basics")]
         public Dialogue dialogueInput;
         public LayerMask interactableLayers = ~0; // Defaults to "Everything"
 
@@ -16,9 +15,7 @@ namespace JVDialogue
         [Tooltip("If set to true, the dialogue trigger will only activate one time (until the scene is reloaded).")]
         public bool triggerOnce = false;
 
-        [Space(20)]
-
-        [Header("Events")]
+        // Events
         public UnityEvent OnStartDialogue;
         public UnityEvent OnEndDialogue;
 

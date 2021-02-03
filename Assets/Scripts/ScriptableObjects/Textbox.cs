@@ -5,13 +5,12 @@ namespace JVDialogue
     [System.Serializable]
     public class Textbox : ScriptableObject
     {
-        public Sprite background;
-
         public Character[] characters;
-        public Character.EmotionState[] characterEmotes;
+        public DialogueHelper.EmotionState[] characterEmotes;
 
-        [Range(0, 4)]
         public int activeCharacter;
+
+        public Sprite background;
 
         [TextArea(2,4)]
         public string text;

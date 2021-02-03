@@ -10,12 +10,12 @@ namespace JVDialogue
     public class CharacterEditor : Editor
     {
         SerializedObject so;
-        private Character chara;
+        //private Character chara;
 
         private void OnEnable()
         {
             so = serializedObject;
-            chara = (Character)target;
+            //chara = (Character)target;
         }
 
         public override void OnInspectorGUI()
@@ -38,9 +38,9 @@ namespace JVDialogue
 
                 EditorGUILayout.Space(5);
 
-                for (int i = 0; i < Enum.GetNames(typeof(Character.EmotionState)).Length; i++)
+                for (int i = 0; i < Enum.GetNames(typeof(DialogueHelper.EmotionState)).Length; i++)
                 {
-                    EditorGUILayout.PropertyField(so.FindProperty(nameof(Character.emotions)).GetArrayElementAtIndex(i), new GUIContent($"{(Character.EmotionState)i}"));
+                    EditorGUILayout.PropertyField(so.FindProperty(nameof(Character.emotions)).GetArrayElementAtIndex(i), new GUIContent($"{(DialogueHelper.EmotionState)i}"));
                 }
             }
 

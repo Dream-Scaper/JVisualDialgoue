@@ -7,7 +7,7 @@ namespace JVDialogue
     [CreateAssetMenu(fileName = "New Character", menuName = "JVDialogue/Character")]
     public class Character : ScriptableObject
     {
-        public enum EmotionState { Neutral, Happy, Sad, Angry };
+        //public enum EmotionState { Neutral, Happy, Sad, Angry };
 
         public string npcName;
 
@@ -16,26 +16,23 @@ namespace JVDialogue
 
         private void OnEnable()
         {
+            // If the emotions array is completely empty (happens on newly created Character).
             if (emotions == null)
             {
-                emotions = new Sprite[Enum.GetNames(typeof(EmotionState)).Length];
+                emotions = new Sprite[Enum.GetNames(typeof(DialogueHelper.EmotionState)).Length];
             }
 
-            if (emotions.Length != Enum.GetNames(typeof(EmotionState)).Length)
+            // If the array isn't properly sized (happens on addition to the DialogueHelper.EmotionState enum).
+            if (emotions.Length != Enum.GetNames(typeof(DialogueHelper.EmotionState)).Length)
             {
-                ResizeArray();
-            }
-        }
+                Sprite[] temp = emotions;
 
-        private void ResizeArray()
-        {
-            Sprite[] temp = emotions;
+                emotions = new Sprite[Enum.GetNames(typeof(DialogueHelper.EmotionState)).Length];
 
-            emotions = new Sprite[Enum.GetNames(typeof(EmotionState)).Length];
-
-            for (int i = 0; i < Mathf.Min(temp.Length, emotions.Length); i++)
-            {
-                emotions[i] = temp[i];
+                for (int i = 0; i < Mathf.Min(temp.Length, emotions.Length); i++)
+                {
+                    emotions[i] = temp[i];
+                }
             }
         }
     }
