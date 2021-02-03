@@ -107,10 +107,5 @@ namespace JVDialogue
 
             OnExitTrigger.Invoke();
         }
-
-        public void TestFunc()
-        {
-            Debug.Log($"my name is {gameObject.name}");
-        }
     }
 }
