@@ -8,17 +8,21 @@ namespace JVDialogue
     {
         // Public Variables
         public Dialogue dialogueInput;
+        [Tooltip("Name of the tag used to compare against in collision checks. If something with this tag enters the collider, be begin checks for opening dialogue.")] 
         public string interactionTag = "Player";
 
-        [Tooltip("If set to true, the dialogue trigger will start as soon as the scene begins.")]
+        [Tooltip("If set to true, the dialogue trigger will start as soon as the scene begins.")] 
         public bool beginOnStart = false;
 
-        [Tooltip("If set to true, the dialogue trigger will only activate one time (until the scene is reloaded).")]
+        [Tooltip("If set to true, the dialogue trigger will only activate one time (until the scene is reloaded).")] 
         public bool triggerOnce = false;
-
-        [Tooltip("If set to true, the dialogue trigger activate as soon as the tagged object enters it.")]
+       
+        [Tooltip("If set to true, the dialogue trigger activate as soon as the tagged object enters it.")] 
         public bool triggerInstantly = false;
+
+        [Tooltip("Name of the Unity Input Axis that determines which button triggers the dialogue.")] 
         public string interactionButton = "Submit";
+        
         private bool awaitingInput = false;
 
         // Events

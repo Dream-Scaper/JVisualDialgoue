@@ -95,13 +95,43 @@ namespace JVDialogue
             for (int i = 0; i < characterProfiles.Length; i++)
             {
                 characterProfiles[i].color = i == textbox.activeCharacter ? speakerColor : inactiveColor;
-                
+
+                // Check if there is a character in this slot at all.
                 if (textbox.characters[i] != null)
                 {
-                    characterProfiles[i].sprite = textbox.characters[i].emotions[(int)textbox.characterEmotes[i]];
+                    Sprite emotion = textbox.characters[i].emotions[(int)textbox.characterEmotes[i]];
+
+                    // Check for the emotion not being null.
+                    if (emotion != null)
+                    {
+                        characterProfiles[i].sprite = emotion;
+                    }
+                    else
+                    {
+                        // If its null go to fallback.
+                        Sprite fallback = textbox.characters[i].fallback;
+
+                        // If fallback is null put a warning in console.
+                        if (fallback != null)
+                        {
+                            characterProfiles[i].sprite = fallback;
+                            Debug.LogWarning($"Character in slot {i} ({textbox.characters[i].npcName}) is missing an Emotion! They have defaulted to the Fallback sprite.");
+                        }
+                        else
+                        {
+                            characterProfiles[i].sprite = null;
+                            characterProfiles[i].color = Color.clear;
+
+                            if (DialogueHelper.missingEmotionProfileWarnings)
+                            {
+                                Debug.LogWarning($"Character in slot {i} ({textbox.characters[i].npcName}) is missing an Emotion and Fallback sprite!\nPlease go to the scriptable object and assign it there.");
+                            }
+                        }
+                    }
                 }
                 else
                 {
+                    // If theres no character, assume a blank space.
                     characterProfiles[i].sprite = null;
                     characterProfiles[i].color = Color.clear;
                 }

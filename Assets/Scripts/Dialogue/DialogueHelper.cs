@@ -19,5 +19,9 @@ namespace JVDialogue
 
         // When pressing "New Textbox" in the editor, a copy of the previous textbox is made rather than a completely blank slate.
         public static bool populateByDuplicating = true;
+
+        // If set to true, the console will send warnings during playtime when the Fallback and Emotion Sprites are a character are unset.
+        // You may set this to false to prevent console warnings when you intend on having instances of characters displaying no profile.
+        public static bool missingEmotionProfileWarnings = true;
     }
 }

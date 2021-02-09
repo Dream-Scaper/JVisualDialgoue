@@ -33,7 +33,7 @@ namespace JVDialogue
                     EditorGUI.indentLevel++;
                     for (int i = 0; i < tb.characters.Length; i++)
                     {
-                        string displayString = tb.characters[i] != null ? $"{tb.characters[i].name} - {tb.characterEmotes[i]}" : $"None";
+                        string displayString = tb.characters[i] != null ? $"Slot {i}: {tb.characters[i].name} - {tb.characterEmotes[i]}" : $"Slot {i}: None";
 
                         EditorGUILayout.LabelField(displayString);
                     }
@@ -42,7 +42,7 @@ namespace JVDialogue
 
                 EditorGUILayout.Space(5);
 
-                EditorGUILayout.LabelField($"Active Speaker: {tb.activeCharacter}");
+                EditorGUILayout.LabelField($"Active Speaker: Slot {tb.activeCharacter}");
                 EditorGUILayout.LabelField($"Has Background Sprite?: {tb.background != null}");
 
                 EditorGUILayout.Space(5);

@@ -137,8 +137,10 @@ namespace JVDialogue
             newTextbox.characters = new Character[DialogueHelper.profileNumber];
             newTextbox.characterEmotes = new DialogueHelper.EmotionState[DialogueHelper.profileNumber];
 
+            // If this bool is set in the helpers, then we copy over the values from the last entry.
             if (DialogueHelper.populateByDuplicating)
             {
+                // Check if we have a previous Entry to try and copy.
                 if (dialogue.Textboxes.Count > 0)
                 {
                     newTextbox.activeCharacter = dialogue.Textboxes[dialogue.Textboxes.Count - 1].activeCharacter;
