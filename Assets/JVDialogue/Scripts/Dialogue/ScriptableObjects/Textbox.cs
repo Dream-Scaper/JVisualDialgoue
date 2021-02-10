@@ -12,7 +12,7 @@ namespace JVDialogue
 
         public Sprite background;
 
-        [TextArea(2,4)]
+        [TextArea(3,4)]
         public string text;
     }
 }
