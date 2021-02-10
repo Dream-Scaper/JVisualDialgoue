@@ -7,8 +7,6 @@ namespace JVDialogue
     [CreateAssetMenu(fileName = "New Character", menuName = "JVDialogue/Character")]
     public class Character : ScriptableObject
     {
-        //public enum EmotionState { Neutral, Happy, Sad, Angry };
-
         public string npcName;
 
         public Sprite fallback;

@@ -749,7 +749,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueInput: {fileID: 11400000, guid: b020e5a9dd581ee4ea46e818370ede0e, type: 2}
   interactionTag: Player
-  beginOnStart: 0
+  triggerOnStart: 0
   triggerOnce: 1
   triggerInstantly: 1
   interactionButton: Submit
@@ -1380,7 +1380,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueInput: {fileID: 11400000, guid: ae68fcbe35908644d8bead1076ff2c69, type: 2}
   interactionTag: Player
-  beginOnStart: 0
+  triggerOnStart: 0
   triggerOnce: 1
   triggerInstantly: 0
   interactionButton: Submit
@@ -1919,6 +1919,11 @@ PrefabInstance:
         type: 3}
       propertyPath: OnStartDialogue.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2608427380370103766, guid: b0d676664333c1e45aeb083e73b3f5ba,
+        type: 3}
+      propertyPath: triggerOnStart
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2608427380370103767, guid: b0d676664333c1e45aeb083e73b3f5ba,
         type: 3}

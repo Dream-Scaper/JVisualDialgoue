@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace JVDialogue
 {
@@ -8,8 +6,6 @@ namespace JVDialogue
     {
         private DialogueTrigger activeTrigger;
 
-        // We dont want other scripts overriding this, but we do want them to be able to see it.
-        [HideInInspector]
         public Dialogue ActiveDialogue { get; private set; }
 
         [Header("Required Game Objects")]
@@ -27,10 +23,7 @@ namespace JVDialogue
 
         public Dialogue placeholderDialogue;
 
-        // Just like with ActiveDialogue, we need the UI to share this with us but not edit it directly.
-        [HideInInspector]
-        private int textboxIndex = 0;
-        public int TextboxIndex => textboxIndex;
+        public int TextboxIndex { get; private set; } = 0;
 
         [HideInInspector]
         public bool isTalking = false;
@@ -39,6 +32,7 @@ namespace JVDialogue
         {
             if (isTalking)
             {
+                // Timer here prevents the input that opened the dialogue from possibly skpping the text.
                 missinputPreventionTimer -= Time.deltaTime;
 
                 if (Input.GetButtonDown(continueInput) && missinputPreventionTimer <= 0)
@@ -50,9 +44,9 @@ namespace JVDialogue
 
         public void ChangeTextboxIndex(int increment)
         {
-            textboxIndex += increment;
+            TextboxIndex += increment;
 
-            textboxIndex = Mathf.Clamp(textboxIndex, 0, ActiveDialogue.Textboxes.Count);
+            TextboxIndex = Mathf.Clamp(TextboxIndex, 0, ActiveDialogue.Textboxes.Count);
         }
 
         public void StartDialogue(DialogueTrigger dialogue)
@@ -62,16 +56,13 @@ namespace JVDialogue
             isTalking = true;
 
             missinputPreventionTimer = missinputPreventionBuffer;
-            textboxIndex = 0;
+            TextboxIndex = 0;
 
+            // Set the active Trigger and respective Dialogue. If there is no dialogue, use the placeholder.
             activeTrigger = dialogue;
-
             ActiveDialogue = activeTrigger.dialogueInput;
 
-            if (ActiveDialogue == null)
-            {
-                ActiveDialogue = placeholderDialogue;
-            }
+            if (ActiveDialogue == null) ActiveDialogue = placeholderDialogue;
 
             ChangeTextbox(0, false);
         }
@@ -80,13 +71,15 @@ namespace JVDialogue
         {
             if (ActiveDialogue != null)
             {
-                if (textboxIndex >= ActiveDialogue.Textboxes.Count - 1 && dialogueUI.lineFinished && increment > 0)
+                // If we hit "next" and are about to go out of the upper bounds, that must mean we've hit the end, so call EndDialogue() and return early.
+                if (TextboxIndex >= ActiveDialogue.Textboxes.Count - 1 && dialogueUI.lineFinished && increment > 0)
                 {
                     EndDialogue();
                     return;
                 }
-                else if (textboxIndex < 0)
+                else if (TextboxIndex < 0)
                 {
+                    // And if we're less than 0, we can only go up from here, so if we try to go down we return.
                     return;
                 }
 

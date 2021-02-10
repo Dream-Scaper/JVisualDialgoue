@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿
 
 namespace JVDialogue
 {
-    public class DialogueHelper : MonoBehaviour
+    public class DialogueHelper
     {
         // This class stores datatypes and settings for the entire dialogue system.
         // Make any additions necessary, but be sure to not remove anything! 

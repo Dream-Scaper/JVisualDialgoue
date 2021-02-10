@@ -10,7 +10,7 @@ namespace JVDialogue
         private DialogueUI diaUI;
 
         private bool showScrollSettings = true;
-        private bool foldoutDebug = false;
+        private bool foldoutDebug = true;
         private int activeTab = 0;
 
         private void OnEnable()
