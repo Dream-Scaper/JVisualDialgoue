@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa4509c1853f9544893febbf9ab1de8f, type: 3}
+  m_Name: ReadmeJVD
+  m_EditorClassIdentifier: 
+  title: Jay's Visual Dialogue System
+  icon: {fileID: 2800000, guid: 06d86fb9328aade47b33ab2fee2cd41c, type: 3}
+  headers:
+  - Overview
+  - Setting Preferences in DialogueHelpers
+  - Creating a Character
+  - Creating a Dialogue
+  - Adding UI and Dialogue Manager to a Scene
+  - Creating a Dialogue Trigger
+  - Expanding the System for your Project
+  body:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  completedSection: 00000000000000
