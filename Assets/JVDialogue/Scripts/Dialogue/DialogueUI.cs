@@ -103,6 +103,9 @@ namespace JVDialogue
             {
                 characterProfiles[i].color = i == textbox.activeCharacter ? speakerColor : inactiveColor;
 
+                Vector3 imageEulers = characterProfiles[i].gameObject.transform.eulerAngles;
+                characterProfiles[i].gameObject.transform.rotation = Quaternion.Euler(imageEulers.x, textbox.flipY[i] ? 180f : 0f, imageEulers.z);
+
                 // Check if there is a character in this slot at all.
                 if (textbox.characters[i] != null)
                 {

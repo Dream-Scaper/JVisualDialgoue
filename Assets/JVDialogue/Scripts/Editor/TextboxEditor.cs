@@ -31,7 +31,7 @@ namespace JVDialogue
                     EditorGUI.indentLevel++;
                     for (int i = 0; i < tb.characters.Length; i++)
                     {
-                        string displayString = tb.characters[i] != null ? $"Slot {i}: {tb.characters[i].name} - {tb.characterEmotes[i]}" : $"Slot {i}: None";
+                        string displayString = (tb.characters[i] != null ? $"Slot {i}: {tb.characters[i].name} - {tb.characterEmotes[i]}" : $"Slot {i}: None") + $"-{ (tb.flipY[i] ? "" : " Not")} Fliped";
 
                         EditorGUILayout.LabelField(displayString);
                     }

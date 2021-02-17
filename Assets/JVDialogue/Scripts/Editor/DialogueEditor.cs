@@ -104,6 +104,8 @@ namespace JVDialogue
                             {
                                 EditorGUILayout.PropertyField(soTb.FindProperty(nameof(Textbox.characterEmotes)).GetArrayElementAtIndex(tabs[i]), new GUIContent("Character Emotion"));
 
+                                EditorGUILayout.PropertyField(soTb.FindProperty(nameof(Textbox.flipY)).GetArrayElementAtIndex(tabs[i]), new GUIContent("Flip Y?"));
+
                                 // Active Character Checkbox
                                 bool clicked = EditorGUILayout.Toggle("Active Speaker", dialogue.Textboxes[i].activeCharacter == tabs[i]);
 
@@ -196,6 +198,7 @@ namespace JVDialogue
             newTextbox.name = (dialogue.Textboxes.Count + 1).ToString();
             newTextbox.characters = new Character[DialogueHelper.profileNumber];
             newTextbox.characterEmotes = new DialogueHelper.EmotionState[DialogueHelper.profileNumber];
+            newTextbox.flipY = new bool[DialogueHelper.profileNumber];
             newTextbox.backgroundColor = Color.white;
 
             // If this bool is set in the helpers, then we copy over the values from the last entry.
@@ -212,6 +215,7 @@ namespace JVDialogue
                     {
                         newTextbox.characters[i] = dialogue.Textboxes[dialogue.Textboxes.Count - 1].characters[i];
                         newTextbox.characterEmotes[i] = dialogue.Textboxes[dialogue.Textboxes.Count - 1].characterEmotes[i];
+                        newTextbox.flipY[i] = dialogue.Textboxes[dialogue.Textboxes.Count - 1].flipY[i];
                     }
                 }
             }
@@ -250,6 +254,7 @@ namespace JVDialogue
                 {
                     dialogue.Textboxes[index].characters[i] = null;
                     dialogue.Textboxes[index].characterEmotes[i] = DialogueHelper.EmotionState.Neutral;
+                    dialogue.Textboxes[index].flipY[i] = false;
                 }
             }
         }

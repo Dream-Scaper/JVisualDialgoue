@@ -7,6 +7,7 @@ namespace JVDialogue
     {
         public Character[] characters;
         public DialogueHelper.EmotionState[] characterEmotes;
+        public bool[] flipY;
 
         public int activeCharacter;
 

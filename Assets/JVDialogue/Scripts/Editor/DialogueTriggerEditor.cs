@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEditor;
+using UnityEditor.AnimatedValues;
 
 namespace JVDialogue
 {
@@ -10,11 +11,15 @@ namespace JVDialogue
         private DialogueTrigger diaTrig;
 
         private int activeTab = 0;
+        private AnimBool showInputField;
 
         private void OnEnable()
         {
             so = serializedObject;
             diaTrig = (DialogueTrigger)target;
+
+            showInputField = new AnimBool(!diaTrig.triggerInstantly);
+            showInputField.valueChanged.AddListener(Repaint);
         }
 
         public override void OnInspectorGUI()
@@ -35,10 +40,13 @@ namespace JVDialogue
                         EditorGUILayout.PropertyField(so.FindProperty(nameof(DialogueTrigger.triggerOnStart)), new GUIContent("Trigger On Start", "If set to true, the dialogue trigger will start as soon as the scene begins."));
                         EditorGUILayout.PropertyField(so.FindProperty(nameof(DialogueTrigger.triggerOnce)), new GUIContent("Trigger Once", "If set to true, the dialogue trigger will only activate one time (until the scene is reloaded)."));
                         EditorGUILayout.PropertyField(so.FindProperty(nameof(DialogueTrigger.triggerInstantly)), new GUIContent("Trigger Instantly", "If set to true, the dialogue trigger activate as soon as the tagged object enters it."));
-                        if (!diaTrig.triggerInstantly)
+                        showInputField.target = !diaTrig.triggerInstantly;
+                        
+                        if (EditorGUILayout.BeginFadeGroup(showInputField.faded))
                         {
                             EditorGUILayout.PropertyField(so.FindProperty(nameof(DialogueTrigger.interactionButton)), new GUIContent("Trigger Interaction Button", "Name of the Unity Input Axis that determines which button triggers the dialogue."));
                         }
+                        EditorGUILayout.EndFadeGroup();
                         break;
                     case 1:
                         EditorGUILayout.PropertyField(so.FindProperty(nameof(DialogueTrigger.OnStartDialogue)));
