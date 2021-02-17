@@ -20,7 +20,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 25c8b3e02e80de244ab15ec28e995bcb, type: 2}
   characterEmotes: 0000000000000000000000000000000000000000
   activeCharacter: 0
-  background: {fileID: 0}
+  background: {fileID: 21300000, guid: 6af820a873e4af34a8c78e56791a3c6d, type: 3}
+  backgroundColor: {r: 1, g: 1, b: 1, a: 0.09803922}
   text: Oh- wait- I haven't even had the chance to talk yet though. Now you can see
     how the profile colors change when a certain character is talking.
 --- !u!114 &-2617966528256691505
@@ -43,7 +44,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 25c8b3e02e80de244ab15ec28e995bcb, type: 2}
   characterEmotes: 0000000000000000000000000000000002000000
   activeCharacter: 4
-  background: {fileID: 0}
+  background: {fileID: 21300000, guid: 6af820a873e4af34a8c78e56791a3c6d, type: 3}
+  backgroundColor: {r: 1, g: 1, b: 1, a: 0.5882353}
   text: Oh I am just a bored NPC who does nothing but sit around all day...
 --- !u!114 &-438999575395734632
 MonoBehaviour:
@@ -65,7 +67,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 25c8b3e02e80de244ab15ec28e995bcb, type: 2}
   characterEmotes: 0100000000000000000000000000000001000000
   activeCharacter: 4
-  background: {fileID: 0}
+  background: {fileID: 21300000, guid: 6af820a873e4af34a8c78e56791a3c6d, type: 3}
+  backgroundColor: {r: 1, g: 1, b: 1, a: 0.19607843}
   text: Now go forth! To the red orb that will appear once you've finished this dialogue!
 --- !u!114 &11400000
 MonoBehaviour:
@@ -106,7 +109,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 25c8b3e02e80de244ab15ec28e995bcb, type: 2}
   characterEmotes: 0300000000000000000000000000000000000000
   activeCharacter: 4
-  background: {fileID: 0}
+  background: {fileID: 21300000, guid: 6af820a873e4af34a8c78e56791a3c6d, type: 3}
+  backgroundColor: {r: 1, g: 1, b: 1, a: 0.39215687}
   text: Yeah alright I'm done doing this bit. This is an example how how to set up
     an NPC with a dialouge that triggers once you press a button specified.
 --- !u!114 &5946412497130140567
@@ -129,7 +133,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 25c8b3e02e80de244ab15ec28e995bcb, type: 2}
   characterEmotes: 0000000000000000000000000000000000000000
   activeCharacter: 4
-  background: {fileID: 0}
+  background: {fileID: 21300000, guid: 6af820a873e4af34a8c78e56791a3c6d, type: 3}
+  backgroundColor: {r: 1, g: 1, b: 1, a: 0.29411766}
   text: It uses the same bindings as the default Unity input system, but this can
     be changed with very little code tweaking!
 --- !u!114 &7999492386754531211
@@ -152,5 +157,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 25c8b3e02e80de244ab15ec28e995bcb, type: 2}
   characterEmotes: 0200000000000000000000000000000001000000
   activeCharacter: 4
-  background: {fileID: 0}
+  background: {fileID: 21300000, guid: 6af820a873e4af34a8c78e56791a3c6d, type: 3}
+  backgroundColor: {r: 1, g: 1, b: 1, a: 0.49019608}
   text: Oh! Hark! A player for which to speak to!

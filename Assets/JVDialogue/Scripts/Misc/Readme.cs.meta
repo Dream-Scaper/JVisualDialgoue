@@ -3,9 +3,10 @@ guid: aa4509c1853f9544893febbf9ab1de8f
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - icon: {fileID: 2800000, guid: 06d86fb9328aade47b33ab2fee2cd41c, type: 3}
   executionOrder: 0
-  icon: {instanceID: 0}
+  icon: {fileID: 2800000, guid: 06d86fb9328aade47b33ab2fee2cd41c, type: 3}
   userData: 
   assetBundleName: 
   assetBundleVariant: 

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa4509c1853f9544893febbf9ab1de8f, type: 3}
   m_Name: ReadmeJVD
   m_EditorClassIdentifier: 
-  title: Jay's Visual Dialogue System
-  icon: {fileID: 2800000, guid: 06d86fb9328aade47b33ab2fee2cd41c, type: 3}
+  title: Jay's Visual Dialogue
+  icon: {fileID: 2800000, guid: f3d65aa77965b134e8702a04c23ff299, type: 3}
   headers:
   - Overview
   - Setting Preferences in DialogueHelpers
@@ -23,11 +23,75 @@ MonoBehaviour:
   - Creating a Dialogue Trigger
   - Expanding the System for your Project
   body:
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - "<b>Jay\u2019s Visual Dialogue System</b> is a Unity Package aimed at making
+    it easy for designers and people with little coding experience to have a visual
+    editor for making RPG and Visual Novel style text conversations. It utilizes
+    ScriptableObjects to make reusing Characters and Dialogue easy, uses Unity Events
+    to aid in the creation of cutscene-like sequences, and is programmed to be highly
+    expandable and customizable!\r\n\nThis Readme acts as a first-time setup checklist-
+    give each section a look, and be sure to mark off finished parts! You can come
+    back to this at any time.\r\n"
+  - "While using JVDialogue you may want to tweak both your implementation in Unity
+    and editor experience. For example, if you wanted to add another emotion to make
+    it possible for a Character to display, or add additional warnings for missing
+    sprites. This can be done by editing the <b>DialogueHelpers</b>.\n\r\nIn the
+    Folder <b>JVDialogue > Scripts</b>, you\u2019ll find the DialogueHelpers.cs file
+    (the script with a gear for an icon). Open it up in your script editor of choice
+    and edit the fields. Each variable is commented with their exact implementation
+    for clarity. \r\nYou can also add variables you need to be global to JVDialogue
+    in here, but don\u2019t remove any that came to start!\r"
+  - "Right-click anywhere in the <b>Project</b> tab and go to <b>Create > JVDialogue
+    > Character</b>. \n\nWhile you don\u2019t need Characters for every Dialogue,
+    using Characters allows you to easily display consistent portrait sprites and
+    names.\n\nGive the Character a name, assign sprites to each field, and your character
+    is ready! Try creating <b>two</b> Characters before moving on to the next step."
+  - "Right-click anywhere in the <b>Project</b> tab and go to <b>Create > JVDialogue
+    > Dialogue</b>. \r\n\nIn the inspector, hit <b>Add Textbox</b>. Use the tabs
+    labeled <b>Slot [1-5]</b> to switch between settings for the Character in the
+    given slot. Empty slots will just stay blank, so you can position characters
+    just to be on the far left and far right, only in the center, or any combination!
+    \r\n\n<i>Note that the layout is purely an idea of which characters are on the
+    screen and in what positions, as the Dialogue UI set up in a scene is what will
+    determine the actual spacing and layout.</i>\r\n\nTry creating a short Dialogue
+    with your two Characters before moving on to the next step!"
+  - "Open to the Folder <b>JVDialogue > Prefabs</b>. Inside the Prefabs folder you\u2019ll
+    find both a Dialogue UI and Dialogue Manager Prefab. The Dialogue Manager is
+    already on the Dialogue UI, so just drop the Dialogue UI Prefab into your scene!
+    Don\u2019t forget to add an Event System to your scene if you don\u2019t already
+    have one (from the top toolbar, <b>GameObject > UI > Event System</b>).\r\n\r\nThe
+    Dialogue UI Prefab should come with all components in the correct spots out of
+    the box! Feel free to mess around with the UI\u2019s layout to get your desired
+    look. \n\nAll Text components start as the simple Unity built-in Text components,
+    but can easily be upgraded to TextMeshPro.\n<i>Head to the section \"Expanding
+    the System for your Project\" for more info on how to upgrade to TMPro.\r</i>"
+  - "Open to the Folder <b>JVDialogue > Prefabs</b> (the same place we found the
+    Dialouge UI). The Prefab for the Dialogue Trigger is what will allow us to get
+    our Dialouges working in-game.\r\n\r\nThere are a number of settings on the Dialogue
+    Trigger. In the Basics tab, you can configure what Tag an item needs to trigger
+    a dialogue, whether the dialogue will trigger instantly upon entry or needs an
+    additional input, and more! Hover over any variable for a tooltip description
+    of its function.\r\n\nIn the Events tab, you can use the Events to call other
+    methods, activate Game Objects, and every other function you can preform with
+    Unity\u2019s Events! You may have used Events before if you\u2019ve ever used
+    a UI Button component with the OnClick() Event.\r\n\r\nTry placing a Dialogue
+    Trigger in the scene, assign it with the Dialogue you created, and tick the box
+    for <b>Trigger on Start</b>. Play the scene and if your Dialogue UI opens, you\u2019re
+    ready to roll!\r\n"
+  - "The easiest thing to add to the system would be adding TextMeshPro instead of
+    using Unity\u2019s built-in Text Component. Simply replace all the Text Components
+    in your Dialogue UI Prefab to be TextMeshPro - Text Components. Then, in the
+    DialogueUI.cs, uncomment the line for <b>using TMPro</b>, and the lines for <b>nameText</b>
+    and <b>speechText</b>. Save, then reassign the proper GameObjects in the inspector,
+    and everything will work just the same!\r\n\r\n<i>If you\u2019re looking for
+    other ways to expand the system for your own game, here are some ideas and tips:\r</i>\nThe
+    Textbox ScriptableObject that houses the information for a single textbox can
+    be expanded in many ways to hold more variables for customizing your UI. You
+    could add a variable that determines if the textbox should display on the top
+    or bottom of the screen, triggers for UI animations, and more!\r\n\nCharacter
+    can be built on as well! By default, all of the emotion sprites support only
+    Sprites. With small tweaks to both Character and the Dialogue UI, you could just
+    as easily change this to support Animation Clips instead! You can also store
+    additional information in Character. Maybe you want a character to talk in a
+    specific color- just store it in Character and use it in the DialogueUI!\n"
   completedSection: 00000000000000
+  foldOuts: 00000000000000

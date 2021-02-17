@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEditor;
+using UnityEditor.AnimatedValues;
 
 namespace JVDialogue
 {
@@ -9,7 +10,7 @@ namespace JVDialogue
         SerializedObject so;
         private DialogueUI diaUI;
 
-        private bool showScrollSettings = true;
+        private AnimBool showScrollSettings;
         private bool foldoutDebug = true;
         private int activeTab = 0;
 
@@ -17,6 +18,9 @@ namespace JVDialogue
         {
             so = serializedObject;
             diaUI = (DialogueUI)target;
+
+            showScrollSettings = new AnimBool(diaUI.scrollTextOverride);
+            showScrollSettings.valueChanged.AddListener(Repaint);
         }
 
         public override void OnInspectorGUI()
@@ -59,16 +63,14 @@ namespace JVDialogue
                         EditorGUILayout.PropertyField(so.FindProperty(nameof(DialogueUI.placeholderName)));
 
                         EditorGUILayout.PropertyField(so.FindProperty(nameof(DialogueUI.scrollTextOverride)));
-                        showScrollSettings = ((DialogueUI)target).scrollTextOverride;
+                        showScrollSettings.target = diaUI.scrollTextOverride;
 
-                        if (showScrollSettings)
+                        if (EditorGUILayout.BeginFadeGroup(showScrollSettings.faded))
                         {
-                            using (new GUILayout.VerticalScope(EditorStyles.helpBox))
-                            {
-                                EditorGUILayout.PropertyField(so.FindProperty(nameof(DialogueUI.textScrollSpeed)));
-                                EditorGUILayout.PropertyField(so.FindProperty(nameof(DialogueUI.charactersUntilNewline)));
-                            }
+                            EditorGUILayout.PropertyField(so.FindProperty(nameof(DialogueUI.textScrollSpeed)));
+                            EditorGUILayout.PropertyField(so.FindProperty(nameof(DialogueUI.charactersUntilNewline)));
                         }
+                        EditorGUILayout.EndFadeGroup();
                         break;
 
                     case 2:
@@ -81,7 +83,7 @@ namespace JVDialogue
 
             using (new GUILayout.VerticalScope(EditorStyles.helpBox))
             {
-                foldoutDebug = EditorGUILayout.Foldout(foldoutDebug, "Debug");
+                foldoutDebug = EditorGUILayout.Foldout(foldoutDebug, "Debug", true);
 
                 if (foldoutDebug)
                 {

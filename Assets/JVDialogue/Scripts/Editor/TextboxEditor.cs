@@ -42,6 +42,10 @@ namespace JVDialogue
 
                 EditorGUILayout.LabelField($"Active Speaker: Slot {tb.activeCharacter}");
                 EditorGUILayout.LabelField($"Has Background Sprite?: {tb.background != null}");
+                if (tb.background != null)
+                {
+                    EditorGUILayout.LabelField($"Background color: #{ColorUtility.ToHtmlStringRGBA(tb.backgroundColor)}");
+                }
 
                 EditorGUILayout.Space(5);
 

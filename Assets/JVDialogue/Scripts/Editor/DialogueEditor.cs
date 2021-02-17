@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEditor.AnimatedValues;
 
 namespace JVDialogue
 {
@@ -12,29 +13,50 @@ namespace JVDialogue
 
         private List<bool> foldOuts;
         private List<int> tabs;
+        private List<AnimBool> additionalOptions;
 
         private void OnEnable()
         {
             so = serializedObject;
             dialogue = (Dialogue)target;
 
-            if (foldOuts == null)
+            // Create Lists for inspector variables.
+            foldOuts = new List<bool>();
+            for (int i = 0; i < dialogue.Textboxes.Count; i++)
             {
-                foldOuts = new List<bool>();
-
-                for (int i = 0; i < dialogue.Textboxes.Count; i++)
-                {
-                    foldOuts.Add(true);
-                }
+                foldOuts.Add(true);
             }
 
-            if (tabs == null)
+            tabs = new List<int>();
+            for (int i = 0; i < dialogue.Textboxes.Count; i++)
             {
-                tabs = new List<int>();
+                tabs.Add(0);
+            }
 
-                for (int i = 0; i < dialogue.Textboxes.Count; i++)
+            additionalOptions = new List<AnimBool>();
+            for (int i = 0; i < dialogue.Textboxes.Count; i++)
+            {
+                AnimBool temp = new AnimBool(dialogue.Textboxes[i].characters[0] != null);
+                temp.valueChanged.AddListener(Repaint);
+                additionalOptions.Add(temp);
+            }
+
+            // Check to make sure the character profile amount matches the settings.
+            for (int i = 0; i < dialogue.Textboxes.Count; i++)
+            {
+                if (dialogue.Textboxes[i].characters.Length != DialogueHelper.profileNumber)
                 {
-                    tabs.Add(0);
+                    Character[] tempChara = dialogue.Textboxes[i].characters;
+                    DialogueHelper.EmotionState[] tempEmotion = dialogue.Textboxes[i].characterEmotes;
+
+                    dialogue.Textboxes[i].characters = new Character[DialogueHelper.profileNumber];
+                    dialogue.Textboxes[i].characterEmotes = new DialogueHelper.EmotionState[DialogueHelper.profileNumber];
+
+                    for (int j = 0; j < Mathf.Min(tempChara.Length, DialogueHelper.profileNumber); j++)
+                    {
+                        dialogue.Textboxes[i].characters[j] = tempChara[j];
+                        dialogue.Textboxes[i].characterEmotes[j] = tempEmotion[j];
+                    }
                 }
             }
         }
@@ -61,20 +83,25 @@ namespace JVDialogue
                         soTb.Update();
                         EditorGUI.BeginChangeCheck();
 
-                        // Visual Preview
-                        // TODO
-
                         // Tabs
                         using (new GUILayout.VerticalScope(EditorStyles.helpBox))
                         {
-                            tabs[i] = GUILayout.Toolbar(tabs[i], new string[] { "Slot 1", "Slot 2", "Slot 3", "Slot 4", "Slot 5", });
+                            string[] tabsLabels = new string[DialogueHelper.profileNumber];
+                            for (int j = 0; j < tabsLabels.Length; j++)
+                            {
+                                tabsLabels[j] = $"Slot {j + 1}";
+                            }
+
+                            tabs[i] = GUILayout.Toolbar(tabs[i], tabsLabels);
 
                             // Character specific to open tab
                             EditorGUILayout.PropertyField(soTb.FindProperty(nameof(Textbox.characters)).GetArrayElementAtIndex(tabs[i]), new GUIContent("Character"));
 
-                            if (dialogue.Textboxes[i].characters[tabs[i]] != null)
+                            additionalOptions[i].target = (dialogue.Textboxes[i].characters[tabs[i]] != null);
+
+                            // This will not display if no character is assigned.
+                            if (EditorGUILayout.BeginFadeGroup(additionalOptions[i].faded))
                             {
-                                // This will not display if no character is assigned.
                                 EditorGUILayout.PropertyField(soTb.FindProperty(nameof(Textbox.characterEmotes)).GetArrayElementAtIndex(tabs[i]), new GUIContent("Character Emotion"));
 
                                 // Active Character Checkbox
@@ -85,18 +112,51 @@ namespace JVDialogue
                                     dialogue.Textboxes[i].activeCharacter = tabs[i];
                                 }
                             }
+                            EditorGUILayout.EndFadeGroup();
                         }
 
                         EditorGUILayout.Space(2);
 
                         // These elements are outside the toolbar scope because they are viewable at all times.
                         EditorGUILayout.PropertyField(soTb.FindProperty(nameof(Textbox.background)), new GUIContent("Background"));
+                        EditorGUILayout.PropertyField(soTb.FindProperty(nameof(Textbox.backgroundColor)), new GUIContent("Background Color"));
+
                         EditorGUILayout.PropertyField(soTb.FindProperty(nameof(Textbox.text)), new GUIContent("Textbox Contents"));
 
-                        // Button to remove item from list.
-                        if (GUILayout.Button("Remove Textbox " + (i + 1)))
+                        // BUTTONS -----------------------------------------------------------------------------------------------------------------------
+                        using (new EditorGUILayout.HorizontalScope(EditorStyles.helpBox))
                         {
-                            RemoveTextbox(i);
+                            using (new EditorGUILayout.VerticalScope())
+                            {
+                                // Button to clear all text from the textbox.
+                                if (GUILayout.Button("Clear Textbox " + (i + 1)))
+                                {
+                                    ClearTextbox(i);
+                                }
+
+                                // Button to remove item from list.
+                                if (GUILayout.Button("Remove Textbox " + (i + 1)))
+                                {
+                                    RemoveTextbox(i);
+                                }
+                            }
+
+                            using (new EditorGUILayout.VerticalScope())
+                            {
+                                EditorGUI.BeginDisabledGroup(!(i > 0));
+                                if (GUILayout.Button("Move Textbox Up"))
+                                {
+                                    SwapTextboxes(i, i - 1);
+                                }
+                                EditorGUI.EndDisabledGroup();
+
+                                EditorGUI.BeginDisabledGroup(!(i < dialogue.Textboxes.Count - 1));
+                                if (GUILayout.Button("Move Textbox Down"))
+                                {
+                                    SwapTextboxes(i, i + 1);
+                                }
+                                EditorGUI.EndDisabledGroup();
+                            }
                         }
 
                         // Apply Changes
@@ -136,6 +196,7 @@ namespace JVDialogue
             newTextbox.name = (dialogue.Textboxes.Count + 1).ToString();
             newTextbox.characters = new Character[DialogueHelper.profileNumber];
             newTextbox.characterEmotes = new DialogueHelper.EmotionState[DialogueHelper.profileNumber];
+            newTextbox.backgroundColor = Color.white;
 
             // If this bool is set in the helpers, then we copy over the values from the last entry.
             if (DialogueHelper.populateByDuplicating)
@@ -144,6 +205,8 @@ namespace JVDialogue
                 if (dialogue.Textboxes.Count > 0)
                 {
                     newTextbox.activeCharacter = dialogue.Textboxes[dialogue.Textboxes.Count - 1].activeCharacter;
+                    newTextbox.background = dialogue.Textboxes[dialogue.Textboxes.Count - 1].background;
+                    newTextbox.backgroundColor = dialogue.Textboxes[dialogue.Textboxes.Count - 1].backgroundColor;
 
                     for (int i = 0; i < DialogueHelper.profileNumber; i++)
                     {
@@ -156,12 +219,39 @@ namespace JVDialogue
             dialogue.Textboxes.Add(newTextbox);
             foldOuts.Add(true);
             tabs.Add(0);
+            AnimBool temp = new AnimBool(false);
+            temp.valueChanged.AddListener(Repaint);
+            additionalOptions.Add(temp);
 
             // Add the Textbox asset to be a child of this Dialogue asset.
             AssetDatabase.AddObjectToAsset(newTextbox, dialogue);
 
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
+        }
+
+        private void SwapTextboxes(int a, int b)
+        {
+            Textbox temp = dialogue.Textboxes[a];
+
+            dialogue.Textboxes[a] = dialogue.Textboxes[b];
+            dialogue.Textboxes[b] = temp;
+        }
+
+        private void ClearTextbox(int index)
+        {
+            if (EditorUtility.DisplayDialog($"Clear Textbox {index + 1}", $"Are you sure you want to clear all fields in Textbox ({index + 1}) in the Dialogue ({dialogue.name})?\nThis action is not reverseable.", "Clear", "Cancel"))
+            {
+                dialogue.Textboxes[index].text = "";
+                dialogue.Textboxes[index].background = null;
+                dialogue.Textboxes[index].activeCharacter = 0;
+
+                for (int i = 0; i < dialogue.Textboxes[index].characters.Length; i++)
+                {
+                    dialogue.Textboxes[index].characters[i] = null;
+                    dialogue.Textboxes[index].characterEmotes[i] = DialogueHelper.EmotionState.Neutral;
+                }
+            }
         }
 
         private void RemoveTextbox(int index)
@@ -173,6 +263,7 @@ namespace JVDialogue
                 dialogue.Textboxes.RemoveAt(index);
                 foldOuts.RemoveAt(index);
                 tabs.RemoveAt(index);
+                additionalOptions.RemoveAt(index);
 
                 AssetDatabase.SaveAssets();
                 AssetDatabase.Refresh();
@@ -191,6 +282,7 @@ namespace JVDialogue
                     dialogue.Textboxes.RemoveAt(i);
                     foldOuts.RemoveAt(i);
                     tabs.RemoveAt(i);
+                    additionalOptions.RemoveAt(i);
                 }
 
                 AssetDatabase.SaveAssets();

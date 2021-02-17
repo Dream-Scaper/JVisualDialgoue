@@ -20,7 +20,8 @@ MonoBehaviour:
   - {fileID: 0}
   characterEmotes: 0000000000000000000000000000000000000000
   activeCharacter: 0
-  background: {fileID: 0}
+  background: {fileID: 21300000, guid: 6af820a873e4af34a8c78e56791a3c6d, type: 3}
+  backgroundColor: {r: 1, g: 0.5019608, b: 0.5019608, a: 1}
   text: OH NO! THE TRIGGER DIDN'T HAVE A VALID DIALOGUE ASSIGNED.
 --- !u!114 &11400000
 MonoBehaviour:

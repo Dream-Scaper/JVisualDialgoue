@@ -91,8 +91,9 @@ namespace JVDialogue
 
             // Sprite Null Check
             bool nullSprite = false;
+            bool nullFallbackSprite = false;
 
-            if (chara.fallback == null) nullSprite = true;
+            if (chara.fallback == null) nullFallbackSprite = true;
 
             for (int i = 0; i < Enum.GetNames(typeof(DialogueHelper.EmotionState)).Length; i++)
             {
@@ -103,10 +104,9 @@ namespace JVDialogue
                 }
             }
 
-            if (nullSprite)
-            {
-                EditorGUILayout.HelpBox("One or more of the Emotion Sprites on this Character are unassigned!\n\nIf an Emotion is unassigned, the Character will default to the Fallback Sprite.\nIf no Fallback is assigned, a Missing Sprite will display in the UI.", MessageType.Warning);
-            }
+            if (nullFallbackSprite) EditorGUILayout.HelpBox("The Fallback sprite on this Character is unassigned!\nIf no Fallback is assigned, a Missing Sprite will display instead.", MessageType.Warning);
+
+            if (nullSprite) EditorGUILayout.HelpBox("One or more of the Emotion Sprites on this Character are unassigned!\nIf an Emotion is unassigned, the Character will default to the Fallback Sprite.", MessageType.Warning);
 
             if (EditorGUI.EndChangeCheck())
             {

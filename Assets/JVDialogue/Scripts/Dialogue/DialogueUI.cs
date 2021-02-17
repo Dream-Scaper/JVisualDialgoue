@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
+//using TMPro;
 
 namespace JVDialogue
 {
@@ -18,8 +18,10 @@ namespace JVDialogue
         public Animator animator;
 
         // UI Elements
-        public TextMeshProUGUI nameText;
-        public TextMeshProUGUI speechText;
+        public Text nameText;
+        public Text speechText;
+        //public TextMeshProUGUI nameText;
+        //public TextMeshProUGUI speechText;
         public Image background;
         public Image[] characterProfiles;
         public Button nextTextboxButton;
@@ -56,6 +58,11 @@ namespace JVDialogue
                 lastTextboxButton.onClick.RemoveAllListeners();
                 lastTextboxButton.onClick.AddListener(delegate { myManager.ChangeTextbox(-1, scrollTextOverride); });
             }
+
+            if (characterProfiles.Length != DialogueHelper.profileNumber)
+            {
+                Debug.LogWarning("The number of characterProfile images doesn't match the amount of profile sprites defined in DialogueHelpers.\nSome sprites may not be shown in the UI!");
+            }
         }
 
         public void OpenUI()
@@ -80,7 +87,7 @@ namespace JVDialogue
             if (displayBackground)
             {
                 background.sprite = textbox.background;
-                background.color = Color.white;
+                background.color = textbox.backgroundColor;
             }
             else
             {
@@ -92,7 +99,7 @@ namespace JVDialogue
             nameText.text = textbox.characters[textbox.activeCharacter] != null ? textbox.characters[textbox.activeCharacter].name : placeholderName;
 
             // Set the character profile sprites.
-            for (int i = 0; i < characterProfiles.Length; i++)
+            for (int i = 0; i < Mathf.Min(characterProfiles.Length, textbox.characters.Length); i++)
             {
                 characterProfiles[i].color = i == textbox.activeCharacter ? speakerColor : inactiveColor;
 

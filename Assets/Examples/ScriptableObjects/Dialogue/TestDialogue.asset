@@ -21,6 +21,7 @@ MonoBehaviour:
   characterEmotes: 0000000001000000000000000100000000000000
   activeCharacter: 1
   background: {fileID: 0}
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
   text: Alright then! That should do it I think. Time to close the textbox once you
     hit the next button one more time... unless you hit that last button...
 --- !u!114 &-784373761607567072
@@ -44,6 +45,7 @@ MonoBehaviour:
   characterEmotes: 0000000000000000000000000100000000000000
   activeCharacter: 3
   background: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
   text: Wow thats great news! I'm also going to say way too much in an attempt to
     fill up the textbox for debugging purposes.
 --- !u!114 &11400000
@@ -84,6 +86,7 @@ MonoBehaviour:
   characterEmotes: 0100000000000000000000000000000000000000
   activeCharacter: 0
   background: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
   text: It seems to now actually yeah! Now I can keep writting to see how long I
     can get this to be. Going to try to get this to at least line two. Maybe three.
     Lets just see how long we can get it for fun!
@@ -108,4 +111,5 @@ MonoBehaviour:
   characterEmotes: 0200000000000000000000000000000001000000
   activeCharacter: 4
   background: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
   text: Do you think this is gonna work first try?

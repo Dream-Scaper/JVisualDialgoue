@@ -20,7 +20,8 @@ MonoBehaviour:
   - {fileID: 0}
   characterEmotes: 0000000000000000010000000000000000000000
   activeCharacter: 2
-  background: {fileID: 0}
+  background: {fileID: 21300000, guid: 9a8ee60a178f2c844b376f7f892503c4, type: 3}
+  backgroundColor: {r: 1, g: 0, b: 0, a: 1}
   text: (Woah! as soon as you touched the orb, this dialogue popped up!)
 --- !u!114 &11400000
 MonoBehaviour:
@@ -58,7 +59,8 @@ MonoBehaviour:
   - {fileID: 0}
   characterEmotes: 0000000000000000020000000000000000000000
   activeCharacter: 0
-  background: {fileID: 0}
+  background: {fileID: 21300000, guid: 11238efd2c554e04ba384f7adeb5cad9, type: 3}
+  backgroundColor: {r: 0, g: 0, b: 1, a: 1}
   text: This dialogue will now self destruct.
 --- !u!114 &9126858491772681769
 MonoBehaviour:
@@ -80,6 +82,7 @@ MonoBehaviour:
   - {fileID: 0}
   characterEmotes: 0000000000000000000000000000000000000000
   activeCharacter: 0
-  background: {fileID: 0}
+  background: {fileID: 21300000, guid: bdb517579364e4746a674653d89e247f, type: 3}
+  backgroundColor: {r: 0, g: 1, b: 0, a: 1}
   text: 'Mysterious voice here: this is what happens when you set a trigger to be
     instant instead of requring an input!'

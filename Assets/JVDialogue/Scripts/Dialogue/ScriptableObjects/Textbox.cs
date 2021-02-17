@@ -11,8 +11,9 @@ namespace JVDialogue
         public int activeCharacter;
 
         public Sprite background;
+        public Color backgroundColor;
 
-        [TextArea(3,4)]
+        [TextArea(1,5)]
         public string text;
     }
 }

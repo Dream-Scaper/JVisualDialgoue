@@ -12,5 +12,6 @@ namespace JVDialogue
         public string[] headers;
         public string[] body;
         public bool[] completedSection;
+        public bool[] foldOuts;
     }
 }

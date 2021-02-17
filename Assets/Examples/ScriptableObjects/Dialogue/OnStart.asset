@@ -21,6 +21,7 @@ MonoBehaviour:
   characterEmotes: 0000000000000000000000000000000000000000
   activeCharacter: 2
   background: {fileID: 0}
+  backgroundColor: {r: 1, g: 1, b: 1, a: 0.21568628}
   text: This is an example of dialogue that starts when the scene begins.
 --- !u!114 &11400000
 MonoBehaviour:
@@ -59,6 +60,7 @@ MonoBehaviour:
   characterEmotes: 0000000000000000010000000000000000000000
   activeCharacter: 2
   background: {fileID: 0}
+  backgroundColor: {r: 1, g: 1, b: 1, a: 0.21568628}
   text: Hello! Welcome.
 --- !u!114 &6081624564973033195
 MonoBehaviour:
@@ -81,4 +83,5 @@ MonoBehaviour:
   characterEmotes: 0000000000000000010000000000000000000000
   activeCharacter: 2
   background: {fileID: 0}
+  backgroundColor: {r: 1, g: 1, b: 1, a: 0.21568628}
   text: Once this dialogue closes, try walking into the sphere around the capsule.

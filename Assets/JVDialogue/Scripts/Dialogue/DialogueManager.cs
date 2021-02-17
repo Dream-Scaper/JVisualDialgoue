@@ -8,15 +8,10 @@ namespace JVDialogue
 
         public Dialogue ActiveDialogue { get; private set; }
 
-        [Header("Required Game Objects")]
         public DialogueUI dialogueUI;
 
-        [Space(10)]
-
-        [Header("Settings")]
         [Range(0f, 1f)]
-        [SerializeField]
-        private float missinputPreventionBuffer = 0.5f;
+        public float missinputPreventionBuffer = 0.5f;
         private float missinputPreventionTimer;
 
         public string continueInput = "Submit";
