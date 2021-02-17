@@ -5,11 +5,11 @@ using UnityEditor;
 
 namespace JVDialogue
 {
-    [CustomEditor(typeof(Readme))]
+    [CustomEditor(typeof(JVDReadme))]
     public class ReadmeEditor : Editor
     {
         SerializedObject so;
-        Readme rm;
+        JVDReadme rm;
 
         private bool stylesSetup = false;
         private GUIStyle titleStyle;
@@ -20,7 +20,7 @@ namespace JVDialogue
         private void OnEnable()
         {
             so = serializedObject;
-            rm = (Readme)target;
+            rm = (JVDReadme)target;
         }
 
         private void SetupStyles()
@@ -38,6 +38,7 @@ namespace JVDialogue
 
                 headerStyle = new GUIStyle(EditorStyles.foldoutHeader);
                 headerStyle.fontSize = 16;
+                headerStyle.wordWrap = true;
 
                 bodyStyle = new GUIStyle(EditorStyles.label);
                 bodyStyle.wordWrap = true;
@@ -81,7 +82,7 @@ namespace JVDialogue
                         {
                             GUI.color = Color.white;
                             EditorGUILayout.LabelField("Mark Step as Complete", EditorStyles.boldLabel);
-                            EditorGUILayout.PropertyField(so.FindProperty(nameof(Readme.completedSection)).GetArrayElementAtIndex(i), new GUIContent(""));
+                            EditorGUILayout.PropertyField(so.FindProperty(nameof(JVDReadme.completedSection)).GetArrayElementAtIndex(i), new GUIContent(""));
                         }
                     }
                 }

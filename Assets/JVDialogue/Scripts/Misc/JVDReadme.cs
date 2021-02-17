@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace JVDialogue
 {
-    public class Readme : ScriptableObject
+    public class JVDReadme : ScriptableObject
     {
         public string title;
         public Texture2D icon;
