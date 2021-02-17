@@ -18,6 +18,7 @@ namespace JVDialogue
         public string interactionButton = "Submit";
         
         private bool awaitingInput = false;
+        private float missinputPreventionTimer;
 
         // Events
         public UnityEvent OnStartDialogue;
@@ -50,6 +51,12 @@ namespace JVDialogue
 
         private void Update()
         {
+            if (missinputPreventionTimer > 0)
+            {
+                missinputPreventionTimer -= Time.deltaTime;
+                return;
+            }
+
             if (awaitingInput)
             {
                 if (Input.GetButtonDown(interactionButton))
@@ -68,8 +75,10 @@ namespace JVDialogue
             }
         }
 
-        public void EndDialogue()
+        public void EndDialogue(float missInputPrevent)
         {
+            missinputPreventionTimer = missInputPrevent;
+
             OnEndDialogue.Invoke();
 
             if (triggerOnce)

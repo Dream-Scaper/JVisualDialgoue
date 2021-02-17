@@ -89,11 +89,10 @@ namespace JVDialogue
                 dialogueUI.CloseUI();
                 isTalking = false;
 
-                activeTrigger.EndDialogue();
+                activeTrigger.EndDialogue(missinputPreventionBuffer);
 
                 activeTrigger = null;
                 ActiveDialogue = null;
-
             }
         }
     }
