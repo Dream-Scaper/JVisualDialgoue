@@ -96,7 +96,7 @@ namespace JVDialogue
             }
 
             // Set the active NPC speaking name.
-            nameText.text = textbox.characters[textbox.activeCharacter] != null ? textbox.characters[textbox.activeCharacter].name : placeholderName;
+            nameText.text = textbox.characters[textbox.activeCharacter] != null ? textbox.characters[textbox.activeCharacter].npcName : placeholderName;
 
             // Set the character profile sprites.
             for (int i = 0; i < Mathf.Min(characterProfiles.Length, textbox.characters.Length); i++)
