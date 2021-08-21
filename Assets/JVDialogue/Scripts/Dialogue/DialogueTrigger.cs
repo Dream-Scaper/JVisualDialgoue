@@ -39,7 +39,7 @@ namespace JVDialogue
 
             if (myManager == null)
             {
-                Debug.LogError("Dialogue Manager not found! Are you sure you have an onject with the Dialogue Manager component in the scene?");
+                Debug.LogError("Dialogue Manager not found! Are you sure you have an object with the Dialogue Manager component in the scene?");
                 return;
             }
 

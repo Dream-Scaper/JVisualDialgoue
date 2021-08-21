@@ -12,6 +12,8 @@ namespace JVDialogue
         public Sprite fallback;
         public Sprite[] emotions;
 
+        //public AudioClip[] scrollTextAudioClips;
+
         private void OnEnable()
         {
             // If the emotions array is completely empty (happens on newly created Character).

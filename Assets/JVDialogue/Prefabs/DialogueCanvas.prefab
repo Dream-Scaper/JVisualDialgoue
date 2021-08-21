@@ -889,9 +889,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: TEST TEXT TEST TEXT TEST TEXT TEST TEXT TEST TEXT TEST TEXT TEST TEXT TEST
-    TEXT TEST TEXT TEST TEXT TEST TEXT TEST TEXT TEST TEXT TEST TEXT TEST TEXT TEST
-    TEXT TEST TEXT TEST TEXT TEST TEXT TEST TEXTTEST TEXT TEST TEXT TEST
+  m_Text: 
 --- !u!1 &3546807265222203585
 GameObject:
   m_ObjectHideFlags: 0
@@ -1220,7 +1218,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8637394714852013629
 RectTransform:
   m_ObjectHideFlags: 0

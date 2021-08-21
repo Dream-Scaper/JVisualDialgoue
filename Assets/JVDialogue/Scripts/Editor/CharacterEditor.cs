@@ -89,6 +89,13 @@ namespace JVDialogue
                 }
             }
 
+            //using (new GUILayout.VerticalScope(EditorStyles.helpBox))
+            //{
+            //    EditorGUILayout.LabelField("Sounds", EditorStyles.boldLabel);
+            //    EditorGUILayout.PropertyField(so.FindProperty(nameof(Character.scrollTextAudioClips)));
+            //}
+
+
             // Sprite Null Check
             bool nullSprite = false;
             bool nullFallbackSprite = false;

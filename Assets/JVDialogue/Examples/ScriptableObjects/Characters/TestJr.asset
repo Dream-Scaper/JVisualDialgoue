@@ -20,3 +20,4 @@ MonoBehaviour:
   - {fileID: 7506944445019638772, guid: 938abf76004d81747830af40006c54b8, type: 3}
   - {fileID: 1859600618466029514, guid: 938abf76004d81747830af40006c54b8, type: 3}
   - {fileID: -1844990240155814153, guid: 938abf76004d81747830af40006c54b8, type: 3}
+  scrollTextAudioClips: []

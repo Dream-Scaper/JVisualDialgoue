@@ -45,14 +45,17 @@ namespace JVDialogue
 
         void Start()
         {
+            // Deactivate the end of line object.
             endLineIndicator.SetActive(false);
 
+            // Check if we have a Next button, and set its On Click functions.
             if (nextTextboxButton != null)
             {
                 nextTextboxButton.onClick.RemoveAllListeners();
                 nextTextboxButton.onClick.AddListener(delegate { myManager.ChangeTextbox(1, scrollTextOverride); });
             }
 
+            // Check if we have a Back button, and set its On Click functions.
             if (lastTextboxButton != null)
             {
                 lastTextboxButton.onClick.RemoveAllListeners();

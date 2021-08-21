@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-6910631280735836415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 117a73bb48acb5b49886c14603a0063b, type: 3}
+  m_Name: 1
+  m_EditorClassIdentifier: 
+  characters:
+  - {fileID: 11400000, guid: 7ab2972e64c2e3d4f969161f60ce7143, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 355da263a0422f24c982811c39d749ac, type: 2}
+  characterEmotes: 0000000000000000000000000000000002000000
+  flipY: 0000000001
+  activeCharacter: 4
+  background: {fileID: 0}
+  backgroundColor: {r: 1, g: 1, b: 1, a: 0}
+  text: My flashlight just died! Theres no way I'm going in there.
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c67441e00cbc755429533444816e3bb7, type: 3}
+  m_Name: Test
+  m_EditorClassIdentifier: 
+  Textboxes:
+  - {fileID: -6910631280735836415}
+  - {fileID: 3517579079443511692}
+  - {fileID: 7704745310305258813}
+--- !u!114 &3517579079443511692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 117a73bb48acb5b49886c14603a0063b, type: 3}
+  m_Name: 2
+  m_EditorClassIdentifier: 
+  characters:
+  - {fileID: 11400000, guid: 7ab2972e64c2e3d4f969161f60ce7143, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 355da263a0422f24c982811c39d749ac, type: 2}
+  characterEmotes: 0100000000000000000000000000000000000000
+  flipY: 0000000001
+  activeCharacter: 0
+  background: {fileID: 0}
+  backgroundColor: {r: 1, g: 1, b: 1, a: 0}
+  text: My flashlight is still good to go. You can just stay close to me!
+--- !u!114 &7704745310305258813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 117a73bb48acb5b49886c14603a0063b, type: 3}
+  m_Name: 3
+  m_EditorClassIdentifier: 
+  characters:
+  - {fileID: 11400000, guid: 7ab2972e64c2e3d4f969161f60ce7143, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 355da263a0422f24c982811c39d749ac, type: 2}
+  characterEmotes: 0000000000000000000000000000000000000000
+  flipY: 0000000001
+  activeCharacter: 4
+  background: {fileID: 0}
+  backgroundColor: {r: 1, g: 1, b: 1, a: 0}
+  text: Alright... you better not try to scare me or anything.
